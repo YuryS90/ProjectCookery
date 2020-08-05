@@ -1,0 +1,13 @@
+{
+    "admin": [],
+    "user": [
+        "group",
+        "users"
+    ],
+    "default": [
+        "group",
+        "users",
+        "Phonebook",
+        "guestbook"
+    ]
+}
