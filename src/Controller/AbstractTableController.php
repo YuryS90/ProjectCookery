@@ -13,7 +13,7 @@ use Model\DbConection;
 
 abstract class AbstractTableController extends AbstractController implements CRUDControllerInterface
 {
-    protected $table; // CRUDInterface
+    protected object $table; // CRUDInterface
     protected $view; // View
     protected $tableName;
 
@@ -33,7 +33,7 @@ abstract class AbstractTableController extends AbstractController implements CRU
         $this->view->setFolder('table');
     }
 
-    public function actionShow(array $data)
+    public function actionShow(array $data): void
     {
         //        $currentPage = $data['get']['page'] ?? 1;
         //        print_r($data);
@@ -78,7 +78,7 @@ abstract class AbstractTableController extends AbstractController implements CRU
         //        print_r($this->table->getPageCount());
     }
 
-    public function actionAdd(array $data)
+    public function actionAdd(array $data): void
     {
         // print_r($data);
         // try {
@@ -90,7 +90,7 @@ abstract class AbstractTableController extends AbstractController implements CRU
         // }
     }
 
-    public function actionDel(array $data)
+    public function actionDel(array $data): void
     {
 
         // print_r($data);
@@ -100,7 +100,7 @@ abstract class AbstractTableController extends AbstractController implements CRU
         $this->redirect('?action=show&type=' . $this->getClassName());
     }
 
-    public function actionShowEdit(array $data)
+    public function actionShowEdit(array $data): void
     {
         // print_r($data['get']['id']);
         $id = $data['get']['id'];
@@ -123,7 +123,7 @@ abstract class AbstractTableController extends AbstractController implements CRU
         // print_r($viewData);
     }
 
-    public function actionEdit(array $data)
+    public function actionEdit(array $data): void
     {
         // print_r($data);
 

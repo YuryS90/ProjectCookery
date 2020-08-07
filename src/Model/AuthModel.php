@@ -1,14 +1,12 @@
 <?php
 
-
 namespace Model;
-
 
 use TexLab\MyDB\DbEntity;
 
 class AuthModel extends DbEntity
 {
-    public function checkUser(string $login, string $password)
+    public function checkUser(string $login, string $password): array
     {
         return $this
             ->reset()
@@ -19,5 +17,4 @@ class AuthModel extends DbEntity
             ->addWhere("BINARY `users`.`password`= '$password'")
             ->get()[0];
     }
-
 }

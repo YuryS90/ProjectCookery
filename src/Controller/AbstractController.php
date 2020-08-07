@@ -6,19 +6,22 @@ use View\View;
 
 abstract class AbstractController
 {
-    protected $view;
+    protected View $view;
 
     public function __construct(View $view)
     {
         $this->view = $view;
     }
 
-    protected function redirect(string $location)
+    protected function redirect(string $location): void
     {
         header("Location: $location");
     }
 
-    protected function getClassName()
+    /**
+     * @return string
+     */
+    protected function getClassName(): string
     {
         preg_match(
             '/(.*)Controller$/',

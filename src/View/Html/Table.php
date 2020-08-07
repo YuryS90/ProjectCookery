@@ -4,8 +4,11 @@ namespace View\Html;
 
 class Table extends AbstractTag
 {
-    protected $table;
-    protected $data;
+    protected string $data;
+
+    /**
+     * @var null|string
+     */
     protected $headers;
 
 
@@ -21,7 +24,11 @@ class Table extends AbstractTag
         return $this;
     }
 
-    public function setHeaders(array $headers) {
+    /**
+     * @return self
+     */
+    public function setHeaders(array $headers): self
+    {
         $str = '';
 
         foreach ($headers as $value) {
@@ -29,26 +36,5 @@ class Table extends AbstractTag
         }
         $this->headers = $str;
         return $this;
-    }
-
-    public function data(array $data)
-    {
-        $str = "";
-
-        foreach ($data as $row) {
-            $str .= "\t<tr>\n";
-            foreach ($row as $cell) {
-                $str .= "\t\t<td>$cell</td>\n";
-            }
-            $str .= "\t</tr>\n";
-        }
-
-        $this->data = $str;
-        return $this;
-    }
-
-    public function html()
-    {
-        return "<table class='table table-striped table-dark'  $this->style$this->class>\n<tr>\n$this->headers</tr>\n$this->data</table>\n";
     }
 }

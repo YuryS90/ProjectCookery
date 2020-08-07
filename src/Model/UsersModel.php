@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Model;
-
 
 use mysqli;
 use TexLab\MyDB\DbEntity;
@@ -14,7 +12,7 @@ class UsersModel extends DbEntity
         parent::__construct($tableName, $mysqli);
     }
 
-    public function getUsersPage(int $page)
+    public function getUsersPage(int $page): array
     {
         return $this
             ->reset()
@@ -25,7 +23,7 @@ class UsersModel extends DbEntity
             ->getPage($page);
     }
 
-    public function getGroupNames()
+    public function getGroupNames(): array
     {
         $data = $this->runSQL('SELECT `id`,`name` FROM `group`');
         $result = [];

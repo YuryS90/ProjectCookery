@@ -1,27 +1,25 @@
 <?php
 
-
 namespace View\Html;
-
 
 class Pagination extends AbstractTag
 {
     protected $pageCount;
-    protected $type;
+    protected string $type;
 
-    public function setControllerType(string $type)
+    public function setControllerType(string $type): self
     {
         $this->type = $type;
         return $this;
     }
 
-    public function setPageCount($pageCount)
+    public function setPageCount($pageCount): self
     {
         $this->pageCount = $pageCount;
         return $this;
     }
 
-    public function html()
+    public function html(): string
     {
         $str = "<div$this->class$this->style$this->id>\n";
         for ($i = 1; $i <= $this->pageCount; $i++) {

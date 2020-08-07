@@ -8,7 +8,6 @@ interface CRUDControllerInterface
 
     public function actionAdd(array $data);
 
-    public function actionDel(array $data);
 
     public function actionShowEdit(array $data);
 
