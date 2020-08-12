@@ -4,7 +4,7 @@ namespace Controller;
 
 class DefaultController extends AbstractController
 {
-    public function actionDefault(): void
+    public function actionDefault()
     {
         $this
             ->view

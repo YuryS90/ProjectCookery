@@ -1,6 +1,8 @@
 <?php
 
+
 namespace Controller;
+
 
 use Core\Config;
 use Model\AuthModel;
@@ -12,8 +14,8 @@ class AuthController extends AbstractController
 {
 
 
-    private object $table;
-    private string $tableName = 'users';
+    private $table;
+    private $tableName = 'users';
 
     public function __construct(View $view)
     {
@@ -29,7 +31,7 @@ class AuthController extends AbstractController
         );
     }
 
-    public function actionLoginForm(): void
+    public function actionLoginForm()
     {
         $this
             ->view
@@ -39,7 +41,7 @@ class AuthController extends AbstractController
             ->addData(['action' => "?action=login&type=" . $this->getClassName()]);
     }
 
-    public function actionLogin(array $httpData): void
+    public function actionLogin($httpData)
     {
 
         $kod = $this
@@ -57,7 +59,7 @@ class AuthController extends AbstractController
         }
     }
 
-    public function actionLogout(array $httpData): void
+    public function actionLogout($httpData)
     {
         unset($_SESSION['user']);
         $this->redirect('/');

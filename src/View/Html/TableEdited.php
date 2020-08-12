@@ -4,31 +4,20 @@ namespace View\Html;
 
 class TableEdited extends Table
 {
-    /**
-     * @var null|string
-     */
     protected $type;
 
-    public function setControllerType(string $type): self
+    public function setControllerType(string $type)
     {
         $this->type = $type;
         return $this;
     }
-    
-    /**
-     * @return self
-     */
-    public function setHeaders(array $headers): self
-    {
+    public function setHeaders(array $headers) {
         parent::setHeaders($headers);
         $this->headers .= "\t<th></th>\n\t<th></th>\n";
         return $this;
     }
 
-    /**
-     * @return self
-     */
-    public function data(array $data): self
+    public function data(array $data)
     {
         $str = "";
 

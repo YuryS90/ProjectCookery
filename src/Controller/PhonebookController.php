@@ -2,8 +2,8 @@
 
 namespace Controller;
 
-class PhonebookController extends AbstractTableController
-{
+class PhonebookController extends AbstractTableController {
 
-    protected string $tableName = "phonebook";
+    protected  $tableName = "phonebook";
+
 }

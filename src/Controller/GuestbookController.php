@@ -1,14 +1,16 @@
 <?php
 
+
 namespace Controller;
+
 
 use Core\Config;
 
 class GuestbookController extends AbstractTableController
 {
-    protected string $tableName = "guestbook";
+    protected $tableName = "guestbook";
 
-    public function actionShow(array $data): void
+    public function actionShow(array $data)
     {
         $this
             ->view

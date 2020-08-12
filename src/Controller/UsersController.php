@@ -10,7 +10,7 @@ use View\View;
 class UsersController extends AbstractTableController
 {
 
-    protected string $tableName = "users";
+    protected $tableName = "users";
 
     public function __construct(View $view)
     {
@@ -26,7 +26,7 @@ class UsersController extends AbstractTableController
         );
     }
 
-    public function actionShow(array $data): void
+    public function actionShow(array $data)
     {
         parent::actionShow($data);
         $this
@@ -41,7 +41,7 @@ class UsersController extends AbstractTableController
                     ->getUsersPage($data['get']['page'] ?? 1)
             ]);
     }
-    public function actionShowEdit(array $data): void
+    public function actionShowEdit(array $data)
     {
         parent::actionShowEdit($data);
         $this
@@ -49,15 +49,14 @@ class UsersController extends AbstractTableController
             ->setFolder('users')
             ->addData([
                 'groupNames' => $this->table->getGroupNames()
-            ]);
-        ;
+            ]);;
     }
-    public function actionAdd(array $data): void
+    public function actionAdd(array $data)
     {
         $data['post']['password'] = md5($data['post']['password'] . Config::SALT);
         parent::actionAdd($data);
     }
-    public function actionEdit(array $data): void
+    public function actionEdit(array $data)
     {
         $data['post']['password'] = md5($data['post']['password'] . Config::SALT);
         parent::actionEdit($data);

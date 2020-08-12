@@ -5,11 +5,12 @@ namespace Core;
 use Controller\TableController;
 use View\View;
 
+
 class Router
 {
-    protected View $view;
-    protected string $controllerName;
-    protected string $actionName;
+    protected $view;
+    protected $controllerName;
+    protected $actionName;
 
     public function __construct()
     {
@@ -18,7 +19,7 @@ class Router
         $this->actionName = "action" . ($_GET['action'] ?? 'Default');
     }
 
-    public function run(): void
+    public function run()
     {
         $blockList = (array) json_decode(file_get_contents(Config::BLOCK_LIST));
         // print_r($blockList);
@@ -28,6 +29,7 @@ class Router
         $this->view->setLayout('mainLayout');
 
         if (!in_array($_GET['type'], $blockList[$cod])) {
+            
             if (class_exists($this->controllerName)) {
                 $controller = new $this->controllerName(
                     $this->view
