@@ -7,7 +7,8 @@
     "default": [
         "group",
         "users",
-        "Phonebook",
-        "guestbook"
+        "phonebook",
+        "guestbook",
+        "dishes"
     ]
 }
