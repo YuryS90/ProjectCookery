@@ -35,3 +35,8 @@
     display: block;
     margin: 20px;
 }
+
+#asd {
+    /* background-color: rgb(79, 82, 241); */
+    background: linear-gradient(45deg, #EECFBA, #C5DDE8);
+}

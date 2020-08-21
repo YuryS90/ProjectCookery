@@ -80,6 +80,9 @@ abstract class AbstractTableController extends AbstractController implements CRU
 
     public function actionAdd(array $data)
     {
+        // print_r($_FILES);
+        // print_r($data['post']);
+
         // print_r($data);
         // try {
         $this->table->add($data['post']);

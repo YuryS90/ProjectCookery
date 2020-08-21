@@ -4,24 +4,30 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "32bc7a5eb5f2558f4dbe3188aae724ae",
+    "content-hash": "cb736afd8b20c866a055e1f90d868162",
     "packages": [
         {
             "name": "texlab/html",
-            "version": "v0.03",
+            "version": "v0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/andy-aa/html.git",
-                "reference": "75c2ebaf4f20a9cd352e49f7fb1c82e91146a4a9"
+                "reference": "3e711feaa5bfca39714be026af1bf3c5a33f80dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/andy-aa/html/zipball/75c2ebaf4f20a9cd352e49f7fb1c82e91146a4a9",
-                "reference": "75c2ebaf4f20a9cd352e49f7fb1c82e91146a4a9",
+                "url": "https://api.github.com/repos/andy-aa/html/zipball/3e711feaa5bfca39714be026af1bf3c5a33f80dd",
+                "reference": "3e711feaa5bfca39714be026af1bf3c5a33f80dd",
                 "shasum": ""
             },
+            "require": {
+                "php": "^7.1"
+            },
             "require-dev": {
-                "phpunit/phpunit": "^9.2"
+                "phpstan/phpstan": "^0.12",
+                "phpunit/phpunit": "^7.5",
+                "squizlabs/php_codesniffer": "3.*",
+                "vimeo/psalm": "^3.0"
             },
             "type": "library",
             "autoload": {
@@ -34,28 +40,31 @@
                 "MIT"
             ],
             "description": "Set of classes for view templates",
-            "time": "2020-07-17T14:56:56+00:00"
+            "time": "2020-08-06T09:14:35+00:00"
         },
         {
             "name": "texlab/mydb",
-            "version": "v0.0.4",
+            "version": "v0.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/andy-aa/mydb.git",
-                "reference": "166a17108c411e365144726194afd73de1d0200a"
+                "reference": "6588dfdd212f7b455642f744e60ce43b83538dc7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/andy-aa/mydb/zipball/166a17108c411e365144726194afd73de1d0200a",
-                "reference": "166a17108c411e365144726194afd73de1d0200a",
+                "url": "https://api.github.com/repos/andy-aa/mydb/zipball/6588dfdd212f7b455642f744e60ce43b83538dc7",
+                "reference": "6588dfdd212f7b455642f744e60ce43b83538dc7",
                 "shasum": ""
             },
             "require": {
                 "ext-mysqli": "*",
-                "php": "^7.2"
+                "php": "^7.1"
             },
             "require-dev": {
-                "phpunit/phpunit": "^8.3"
+                "phpstan/phpstan": "^0.12",
+                "phpunit/phpunit": "^7.5",
+                "squizlabs/php_codesniffer": "3.*",
+                "vimeo/psalm": "^3.0"
             },
             "type": "library",
             "autoload": {
@@ -67,15 +76,14 @@
             "license": [
                 "MIT"
             ],
-            "description": "The lightweight MySql database library",
+            "description": "The lightweight ORM for MySql and MariaDB",
             "keywords": [
-                "data",
+                "mariadb",
                 "mysql",
-                "object",
                 "orm",
                 "php"
             ],
-            "time": "2019-10-31T17:06:12+00:00"
+            "time": "2020-08-07T05:49:47+00:00"
         }
     ],
     "packages-dev": [],

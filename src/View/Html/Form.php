@@ -38,6 +38,10 @@ class Form extends AbstractTag
 
     public function html()
     {
-        return "<form action='$this->action' method='$this->method'$this->class$this->style>\n$this->content</form>";
+        return "<form enctype='multipart/form-data'" .
+            "action='$this->action'" .
+            "method='$this->method'" .
+            "$this->class$this->style>\n" .
+            "$this->content</form>";
     }
 }
