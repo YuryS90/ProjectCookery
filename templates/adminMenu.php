@@ -11,12 +11,12 @@
                     <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
 
-                <!-- <li class="nav-item<?= $controllerType == 'Phonebook' ? ' active' : '' ?>">
-                    <a class="nav-link" href="?action=show&type=Phonebook">Phonebook</a>
-                </li>
-                <li class="nav-item<?= $controllerType == 'guestbook' ? ' active' : '' ?>">
-                    <a class="nav-link" href="?action=show&type=guestbook">Гостевая книга</a> -->
-                <!-- </li> -->
+<!--                <li class="nav-item--><?//= $controllerType == 'Phonebook' ? ' active' : '' ?><!--">-->
+<!--                    <a class="nav-link" href="?action=show&type=Phonebook">Phonebook</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item--><?//= $controllerType == 'guestbook' ? ' active' : '' ?><!--">-->
+<!--                    <a class="nav-link" href="?action=show&type=guestbook">Гостевая книга</a> -->
+<!--                </li>-->
 
                 <li class="nav-item<?= $controllerType == 'dishes' ? ' active' : '' ?>">
                     <a class="nav-link" href="?action=show&type=dishes">Блюда</a>
@@ -27,19 +27,23 @@
                 </li>
                 
                 <li class="nav-item<?= $controllerType == 'group' ? ' active' : '' ?>">
-                    <a class="nav-link" href="?action=show&type=group">Group</a>
+                    <a class="nav-link" href="?action=show&type=group">Группы</a>
                 </li>
 
                 <li class="nav-item<?= $controllerType == 'users' ? ' active' : '' ?>">
-                    <a class="nav-link" href="?action=show&type=users">Users</a>
+                    <a class="nav-link" href="?action=show&type=users">Пользователи</a>
                 </li>
 
                 <li class="nav-item<?= $controllerType == 'auth' ? ' active' : '' ?>">
-                    <a class="nav-link" href="?action=loginform&type=auth">Login</a>
+                    <a class="nav-link" href="?action=loginform&type=auth">Авторизация</a>
                 </li>
 
                 <li class="nav-item<?= $controllerType == 'auth' ? ' active' : '' ?>">
-                    <a class="nav-link" href="?action=logout&type=auth">Logout</a>
+                    <a class="nav-link" href="?action=logout&type=auth">Выход</a>
+                </li>
+
+                <li class="nav-item<?= $controllerType == 'reg' ? ' active' : '' ?>">
+                    <a class="nav-link" href="?action=show&type=reg">Регистрация</a>
                 </li>
 
 

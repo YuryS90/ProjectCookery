@@ -22,12 +22,19 @@ $runner = new Runner(
         'password' => Config::MYSQL_PASSWORD
     ]));
 
-foreach (explode(";", file_get_contents('install/originalcp.sql')) as $value) {
-    try {
-        if (!empty($value)) {
-            $runner->runSQL($value);
-        }
-    } catch (Exception $e) {
-        echo $e->getMessage();
-    }
-}
+// Обработчик ошибок
+$runner->setErrorHandler(function ($mysqli, $sql) {
+    echo "$mysqli->error\n";
+});
+
+$runner->runScript(file_get_contents('install/originalcp.sql'));
+
+//foreach (explode(";", file_get_contents('install/originalcp.sql')) as $value) {
+//    try {
+//        if (!empty($value)) {
+//            $runner->runSQL($value);
+//        }
+//    } catch (Exception $e) {
+//        echo $e->getMessage();
+//    }
+//}

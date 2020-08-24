@@ -46,6 +46,13 @@ class DishesController extends AbstractTableController
 
     public function actionDel(array $data)
     {
+        $id = $data['get']['id'];
+        $img = $this->table->get(['id'=>$id])[0]['imgdishes'];
+        $ext = pathinfo($img, PATHINFO_EXTENSION);
+        if(file_exists("images/dishes/$id.$ext")){
+            unlink("images/dishes/$id.$ext");
+        }
+
         parent::actionDel($data);
     }
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Авг 18 2020 г., 15:09
+-- Время создания: Авг 24 2020 г., 22:38
 -- Версия сервера: 8.0.19
 -- Версия PHP: 7.4.4
 
@@ -44,7 +44,10 @@ CREATE TABLE `dishes` (
 
 INSERT INTO `dishes` (`id`, `namedishes`, `composition`, `volume`, `unit`, `imgdishes`) VALUES
 (1, 'Блюдо1', 'Сomponent1, component2, component3, component4, component5', 150, 'г', 'dishes1.jpg'),
-(2, 'Блюдо2', 'Component1, component2, component3', 10, 'шт', 'dishes2.jpg');
+(2, 'Блюдо2', 'Component1, component2, component3, component4', 10, 'шт', 'dishes2.jpg'),
+(6, 'Блюдо 6', 'без состава', 3, 'г', 'intro4.jpg'),
+(7, 'Блюдо 777', '777', 77, 'кг', 'losos.jpg'),
+(8, 'Блюдо 8', 'Component1', 1, 'кг', 'intro2.jpg');
 
 -- --------------------------------------------------------
 
@@ -159,11 +162,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `login`, `password`, `group_id`, `FIO`) VALUES
-(2, 'Pavel', '929ccc52e633a637f8bf60e98ffc4b1f', 1, 'БОНДАРЕНКО ПАВЕЛ ВЛАДИМИРОВИЧ'),
-(3, 'Vasya', '2836a7191f6a9e2455b763469ca4ec6d', 2, 'ПУПКИН ВАСИЛИЙ'),
-(4, 'Ivan', '432f45b44c432414d2f97df0e5743818', 1, 'Иванов Иван Иванович'),
-(5, 'Peter', '2b7c0e435a43e9c7453c8063b1ac2358', 1, 'Петров Петр Петрович'),
-(6, 'Sidorov', '2836a7191f6a9e2455b763469ca4ec6d', 1, 'Сидоров');
+(30, 'Юрий', '14f5cd49282bcb7e23151f5add107b8e', 1, 'Юрий Юрьевич'),
+(32, 'Вася', '82c183954382732cb37cb1e215581c4f', 2, 'Иваныч'),
+(41, 'Юрийq', '93bbaf379aa8bc7e7e5b65b7872229e4', 2, 'Юрьевич'),
+(43, 'spawn5194', '2b7c0e435a43e9c7453c8063b1ac2358', 2, 'Валерич');
 
 --
 -- Индексы сохранённых таблиц
@@ -217,7 +219,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `dishes`
 --
 ALTER TABLE `dishes`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT для таблицы `group`
@@ -247,7 +249,7 @@ ALTER TABLE `phonebook`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=30;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=44;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц

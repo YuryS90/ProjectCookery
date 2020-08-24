@@ -19,9 +19,9 @@
     //     foreach ($_SESSION['errors'] as $error) {
     //         echo $error . "<br>";
     //     }
-    //     unset($_SESSION['errors']);
+    //     // unset($_SESSION['errors']);
     // }
-    // print_r($_SESSION['errors']);
+    // print_r($_SESSION);
     // $_SESSION['errors'] = [];
     ?>
     <?php

@@ -34,4 +34,9 @@ class UsersModel extends DbEntity
         }
         return $result;
     }
+
+    public function getGroupIdByCode($cod)
+    {
+        return $this->runSQL("SELECT `id` FROM `group` where `cod` = '$cod'")[0]['id'];
+    }
 }
