@@ -30,7 +30,7 @@ echo Html::create('TableEdited')
 $form = Html::create('Form')
     ->setMethod('POST')
     ->setAction("?action=add&type=$type")
-    ->setClass('form');
+    ->setClass('formDish');
 
 
 foreach ($fields as $field) {
@@ -50,9 +50,8 @@ $form->addContent(
         ->html()
 );
 ?>
-<div class="alert alert-secondary" role="alert">
-  <a href="../domains/ProjectCookery/templates/dishes/add.php" class="alert-link">Добавить блюдо</a>.
-</div>
+<!--    <button type="button" class="btn btn-light" id="addDish" value="Добавить блюдо"></button>-->
+    <input type="button" value="Добавить блюдо" id="add">
 
 <?php
 echo $form->html();

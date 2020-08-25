@@ -27,8 +27,13 @@
 }
 
 .form {
+
     margin: 20px;
     padding: 25px;
+}
+
+.formDish {
+    display: none;
 }
 
 .guestbookform label{
