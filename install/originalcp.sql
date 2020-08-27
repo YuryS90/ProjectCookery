@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Авг 24 2020 г., 22:38
+-- Время создания: Авг 27 2020 г., 07:05
 -- Версия сервера: 8.0.19
 -- Версия PHP: 7.4.4
 
@@ -153,19 +153,21 @@ CREATE TABLE `users` (
   `id` int NOT NULL COMMENT '№',
   `login` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Пользователь',
   `password` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Пароль',
-  `group_id` int NOT NULL COMMENT 'Группа',
-  `FIO` varchar(150) NOT NULL COMMENT 'ФИО'
+  `FIO` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'ФИО',
+  `email` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'Почта',
+  `group_id` int NOT NULL COMMENT 'Группа'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `login`, `password`, `group_id`, `FIO`) VALUES
-(30, 'Юрий', '14f5cd49282bcb7e23151f5add107b8e', 1, 'Юрий Юрьевич'),
-(32, 'Вася', '82c183954382732cb37cb1e215581c4f', 2, 'Иваныч'),
-(41, 'Юрийq', '93bbaf379aa8bc7e7e5b65b7872229e4', 2, 'Юрьевич'),
-(43, 'spawn5194', '2b7c0e435a43e9c7453c8063b1ac2358', 2, 'Валерич');
+INSERT INTO `users` (`id`, `login`, `password`, `FIO`, `email`, `group_id`) VALUES
+(30, 'Юрий', '1234', 'Юрий Юрьевич', '', 1),
+(32, 'Вася', '82c183954382732cb37cb1e215581c4f', 'Иваныч', '', 2),
+(41, 'Юрийq', '58501efddbd0bce632f5f88b9c6eac9e', 'Юрьевич', 'yurkesson@m', 2),
+(43, 'spawn5194', '2b7c0e435a43e9c7453c8063b1ac2358', 'Валерич', '', 2),
+(44, 'Евгений', 'fe73086fcc28f348eaa4c51e7cffef9a', 'Иван Иванович', 'yurysviridenko@gmail.com', 2);
 
 --
 -- Индексы сохранённых таблиц
@@ -249,7 +251,7 @@ ALTER TABLE `phonebook`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=44;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=46;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
