@@ -6,13 +6,13 @@
     border-collapse: collapse;
 }
 
-.form textarea {
-    width: 400px;
-    height: 400px;
-    border: 2px solid black;
-    display: block;
-    margin: 20px;
-}
+/*.form textarea {*/
+/*    width: 400px;*/
+/*    height: 400px;*/
+/*    border: 2px solid black;*/
+/*    display: block;*/
+/*    margin: 20px;*/
+/*}*/
 
 .form input[type='text'] {
     background-color: lightgray;
@@ -26,22 +26,57 @@
     margin: 20px;
 }
 
-.form {
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    width: 3%;
+}
+
+.contPag .pagination a {
+    display: block;
+    color: black;
+
+}
+
+.contPag {
+    display: flex;
+    justify-content: center;
+}
+
+.hidden {
+    display: none;
 
     margin: 20px;
     padding: 25px;
 }
 
-.formDish {
-    display: none;
-}
-
-.guestbookform label{
-    display: block;
-    margin: 20px;
-}
-
 #asd {
-    /* background-color: rgb(79, 82, 241); */
     background: linear-gradient(45deg, #EECFBA, #C5DDE8);
 }
+
+#addForm label {
+    display: block;
+}
+
+#addForm {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid yellow;
+    background-color: pink;
+    z-index: 2;
+}
+
+#shadow {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+
+

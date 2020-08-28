@@ -8,11 +8,6 @@ use View\Html\Html;
  * @var string $type Имя контроллера
  */
 
-echo Html::create("Pagination")
-    ->setClass('pagination')
-    ->setControllerType($type)
-    ->setPageCount($pageCount)
-    ->html();
 
 foreach ($table as &$row) {
     $ext = pathinfo($row['imgdishes'], PATHINFO_EXTENSION);
@@ -26,12 +21,25 @@ echo Html::create('TableEdited')
     ->setClass('table')
     ->html();
 
+echo "<div class='contPag'>";
+echo Html::create("Pagination")
+    ->setClass('pagination')
+    ->setControllerType($type)
+    ->setPageCount($pageCount)
+    ->html();
+echo "</div>";
+?>
+
+<a class="btn btn-light" id="addButton">Добавить заявку</a>
+
+<?php
+
 
 $form = Html::create('Form')
     ->setMethod('POST')
     ->setAction("?action=add&type=$type")
-    ->setClass('formDish');
-
+    ->setClass('hidden')
+    ->setId('addForm');
 
 foreach ($fields as $field) {
     if ($field == 'imgdishes') {
@@ -48,10 +56,18 @@ $form->addContent(
         ->setType('submit')
         ->setValue('OK')
         ->html()
-);
-?>
-<!--    <button type="button" class="btn btn-light" id="addDish" value="Добавить блюдо"></button>-->
-    <input type="button" value="Добавить блюдо" id="add">
+)
+    ->addContent(
+        Html::create('A')
+            ->setClass('btn btn-link')
+            ->setId('closeFormButton')
+            ->setInnerText('Закрыть')
+            ->html()
+    );
 
-<?php
 echo $form->html();
+
+
+?>
+
+<div id="shadow" class="hidden"></div>

@@ -3,14 +3,14 @@
 use TexLab\Html\Select;
 use View\Html\Html;
 
-/** @var int $pageCount Количество страниц
+/**
+ * @var int $pageCount Количество страниц
  * @var array $fields Список полей таблицы
  * @var array $comments Комментарии к полям таблицы
  * @var string $type Имя контроллера
+ * @var array $usersList Список пользователей
  * @var array $groupNames Имя групп
  */
-// print_r($groupNames);
-
 
 echo Html::create("Pagination")
     ->setClass('pagination')
@@ -31,14 +31,24 @@ $form = Html::create('Form')
     ->setAction("?action=add&type=$type")
     ->setClass('form');
 
+
+//foreach ($fields as $field) {
+//    $form->addContent(Html::create('Label')->setFor($field)->setInnerText($comments[$field])->html());
+//    $form->addContent(Html::create('input')->setName($field)->setId($field)->html());
+//}
+
 foreach ($fields as $field) {
     $form->addContent(Html::create('Label')->setFor($field)->setInnerText($comments[$field])->html());
 
-    if ($field != 'group_id') {
+    /*
+     * выбираем id того пользователя, от ФИО которого новый заказ. Где полученное значение будет подставлено
+     * в поле users_id, которое озаглавлено как  ФИО
+     * */
+    if ($field != 'users_id') {
         $form->addContent(Html::create('input')->setName($field)->setId($field)->html());
     } else {
         $form->addContent('<br>');
-        $form->addContent((new Select())->setName($field)->setId($field)->setData($groupNames)->html());
+        $form->addContent((new Select())->setName($field)->setId($field)->setData($usersList)->html());
         $form->addContent('<br>');
     }
 }
@@ -51,3 +61,10 @@ $form->addContent(
 );
 
 echo $form->html();
+
+/*
+ * print_r($usersList);
+ * это показатель того, что пришёл массив с пользователями
+ * Array ( [47] => Вася [46] => Игорь [30] => Юрий )
+ * Затем есть заранее подготовленный класс с выпадающим списком
+ * */

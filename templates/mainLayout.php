@@ -29,6 +29,9 @@
         case 'admin':
             include "adminMenu.php";
             break;
+        case 'manager':
+            include "managerMenu.php";
+            break;
         case 'user':
             include "userMenu.php";
             break;

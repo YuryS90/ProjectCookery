@@ -41,7 +41,7 @@ class Form extends AbstractTag
         return "<form enctype='multipart/form-data'" .
             "action='$this->action'" .
             "method='$this->method'" .
-            "$this->class$this->style>\n" .
+            "$this->class$this->style$this->id>\n" .
             "$this->content</form>";
     }
 }

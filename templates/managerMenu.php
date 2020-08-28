@@ -1,7 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light " id="asd">
     <!--    <a class="navbar-brand" href="#">Navbar</a>-->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -20,17 +19,10 @@
                 <a class="nav-link" href="?action=show&type=orders">Заказы</a>
             </li>
 
-            <li class="nav-item<?= $controllerType == 'group' ? ' active' : '' ?>">
-                <a class="nav-link" href="?action=show&type=group">Группы</a>
-            </li>
-
-            <li class="nav-item<?= $controllerType == 'users' ? ' active' : '' ?>">
-                <a class="nav-link" href="?action=show&type=users">Пользователи</a>
-            </li>
-
             <li class="nav-item<?= $controllerType == 'auth' ? ' active' : '' ?>">
                 <a class="nav-link" href="?action=logout&type=auth">Выход</a>
             </li>
+
 
 
             <span class="navbar-text">
