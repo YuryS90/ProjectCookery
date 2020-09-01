@@ -83,5 +83,9 @@
     background-color: rgb(238, 140, 140);
 }
 
+.form input, .form select {
+    display: block;
+}
+
 
 

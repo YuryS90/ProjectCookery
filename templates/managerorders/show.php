@@ -42,30 +42,28 @@ $form = Html::create('Form')
 
 //print_r($fields);
 foreach ($fields as $field) {
-    $form->addContent(Html::create('Label')->setFor($field)->setInnerText($comments[$field])->html());
+
 
     /*
      * выбираем id того пользователя, от ФИО которого новый заказ. Где полученное значение будет подставлено
      * в поле users_id, которое озаглавлено как  ФИО
      * */
     if ($field == 'users_id') {
-        $form->addContent('<br>');
-//        $form->addContent((new Select())->setName($field)->setId($field)->setData($usersList)->html());
+        //        $form->addContent((new Select())->setName($field)->setId($field)->setData($usersList)->html());
         $form->addContent(Html::create('Input')->setType('hidden')->setName($field)->setValue($user_id)->html());
-        $form->addContent('<br>');
     } elseif ($field == 'date') {
+        $form->addContent(Html::create('Label')->setFor($field)->setInnerText($comments[$field])->html());
         $form->addContent(Htmlt::input()->setType('datetime-local')->setName($field)->setId($field)->html());
-//        $form->addContent(Html::create('input')->setName($field)->setId($field)->setType('datetime-local')->html());
+        //        $form->addContent(Html::create('input')->setName($field)->setId($field)->setType('datetime-local')->html());
 
     } elseif ($field == 'dishes_id') {
-        $form->addContent('<br>');
+        $form->addContent(Html::create('Label')->setFor($field)->setInnerText($comments[$field])->html());
+
         $form->addContent((new Select())->setName($field)->setId($field)->setData($dishesList)->html());
-        $form->addContent('<br>');
     } else {
+        $form->addContent(Html::create('Label')->setFor($field)->setInnerText($comments[$field])->html());
         $form->addContent(Html::create('input')->setName($field)->setId($field)->html());
     }
-
-
 }
 
 $form->addContent(

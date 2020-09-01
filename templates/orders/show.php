@@ -48,22 +48,20 @@ foreach ($fields as $field) {
      * в поле users_id, которое озаглавлено как  ФИО
      * */
     if ($field == 'users_id') {
-        $form->addContent('<br>');
+
         $form->addContent((new Select())->setName($field)->setId($field)->setData($usersList)->html());
-        $form->addContent('<br>');
     } elseif ($field == 'date') {
         $form->addContent(Htmlt::input()->setType('datetime-local')->setName($field)->setId($field)->html());
-//        $form->addContent(Html::create('input')->setName($field)->setId($field)->setType('datetime-local')->html());
+        //        $form->addContent(Html::create('input')->setName($field)->setId($field)->setType('datetime-local')->html());
 
     } elseif ($field == 'dishes_id') {
-        $form->addContent('<br>');
+
         $form->addContent((new Select())->setName($field)->setId($field)->setData($dishesList)->html());
-        $form->addContent('<br>');
+    } elseif ($field == 'count') {
+        $form->addContent(Html::create('input')->setName($field)->setType("number")->setId($field)->html());
     } else {
         $form->addContent(Html::create('input')->setName($field)->setId($field)->html());
     }
-
-
 }
 
 $form->addContent(

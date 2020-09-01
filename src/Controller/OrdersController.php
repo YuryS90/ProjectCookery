@@ -58,41 +58,51 @@ class OrdersController extends AbstractTableController
                 'dbname' => Config::MYSQL_DATABASE
             ])
         );
+        $this
+            ->view
+            ->setFolder('orders');
     }
 
 
     public function actionShow(array $data)
     {
-        parent::actionShow($data);
-        $this
-            ->view
-            ->setFolder('orders');
-
-
-//        $this->usersTable->getUsers();
-
-
-
-
+        
+        //        $this->usersTable->getUsers();
         /*
          * Добавляем данные
          * */
-        $this->view->addData(
-            [
+        // $this->view->addData(
+        //     [
+        //         "usersList" => $this->usersTable->getUsers(),
+        //         "dishesList" => $this->dishesTable->getDishes(),
+        //         'table' => $this
+        //             ->table
+        //             ->reset()
+        //             ->setPageSize(Config::PAGE_SIZE)
+        //             ->getOrdersPage($data['get']['page'] ?? 1)
+
+        //     ]
+        // );
+
+        $this
+            ->view
+            ->setTemplate('show')
+            ->setData([
                 "usersList" => $this->usersTable->getUsers(),
                 "dishesList" => $this->dishesTable->getDishes(),
                 'table' => $this
                     ->table
                     ->reset()
                     ->setPageSize(Config::PAGE_SIZE)
-                    ->getOrdersPage($data['get']['page'] ?? 1)
-
-            ]
-        );
-
+                    ->getOrdersPage($data['get']['page'] ?? 1),
+                'fields' => array_diff($this->table->getColumnsNames(), ['id']),
+                'comments' => $this->table->getColumnsComments(),
+                'type' => $this->getClassName(),
+                'pageCount' => $this->table->pageCount()
+            ]);
         // в show будем ловить usersList + ordersList
-//        print_r($this->usersTable->getUsers());
-//        print_r($this->ordersTable->getDishes());
+        //        print_r($this->usersTable->getUsers());
+        //        print_r($this->ordersTable->getDishes());
     }
 
     public function actionShowEdit(array $data)

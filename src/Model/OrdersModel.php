@@ -17,24 +17,34 @@ class OrdersModel extends DbEntity
          * */
         return $this
             ->reset()
-            ->setSelect('`orders`.`id`, `orders`.`id`, `orders`.`users_id`, `dishes`.`namedishes` AS dishes_id, `orders`.`totalvolume`, `orders`.`unit`, `orders`.`date`,`orders`.`status`, `users`.`FIO` AS users_id')
+            ->setSelect('`orders`.`id`,`users`.`FIO` AS users_id,`dishes`.`namedishes` AS dishes_id,`orders`.`count`,`orders`.`date`,`orders`.`status`')
             ->setFrom('`users`, `orders`, `dishes`')
             ->setWhere('`users`.`id` = `orders`.`users_id`') // связь
             ->addWhere('`dishes`.`id` = `orders`.`dishes_id`')
             ->setOrderBy('`orders`.`id`') // по какому полю сортирование
+            // ->getSQL();
             ->getPage($page);
     }
+
 
     public function getOrdersPageUserFilter(int $page, int $user_id)
     {
         return $this
-            ->reset()
-            ->setSelect('`orders`.`id`, `orders`.`id`, `orders`.`users_id`, `dishes`.`namedishes` AS dishes_id, `orders`.`totalvolume`, `orders`.`unit`, `orders`.`date`,`orders`.`status`, `users`.`FIO` AS users_id')
-            ->setFrom('`users`, `orders`, `dishes`')
-            ->setWhere("`users`.`id` = `orders`.`users_id` AND `orders`.`users_id` = $user_id") // связь
-            ->setOrderBy('`orders`.`id`') // по какому полю сортирование
-            ->getPage($page);
+        ->reset()
+        ->setSelect('`orders`.`id`,`users`.`FIO` AS users_id,`dishes`.`namedishes` AS dishes_id,`orders`.`count`,`orders`.`date`,`orders`.`status`')
+        ->setFrom('`users`, `orders`, `dishes`')
+        ->setWhere('`users`.`id` = `orders`.`users_id`') // связь
+        ->addWhere('`dishes`.`id` = `orders`.`dishes_id`')
+        ->addWhere("`orders`.`users_id` = $user_id")
+        ->setOrderBy('`orders`.`id`') // по какому полю сортирование
+        // ->getSQL();
+        ->getPage($page);
+        // return $this
+        //     ->reset()
+        //     ->setSelect('`orders`.`id`, `orders`.`id`, `orders`.`users_id`, `dishes`.`namedishes` AS dishes_id, `orders`.`totalvolume`, `orders`.`unit`, `orders`.`date`,`orders`.`status`, `users`.`FIO` AS users_id')
+        //     ->setFrom('`users`, `orders`, `dishes`')
+        //     ->setWhere("`users`.`id` = `orders`.`users_id` AND `orders`.`users_id` = $user_id") // связь
+        //     ->setOrderBy('`orders`.`id`') // по какому полю сортирование
+        //     ->getPage($page);
     }
-
-
 }
