@@ -17,7 +17,11 @@
             </li>
 
             <li class="nav-item<?= $controllerType == 'orders' ? ' active' : '' ?>">
-                <a class="nav-link" href="?action=show&type=orders">Заказы</a>
+                <a class="nav-link" href="?action=show&type=orders">Все заказы</a>
+            </li>
+
+            <li class="nav-item<?= $controllerType == 'managerorders' ? ' active' : '' ?>">
+                <a class="nav-link" href="?action=show&type=managerorders">Заказы менеджеров</a>
             </li>
 
             <li class="nav-item<?= $controllerType == 'group' ? ' active' : '' ?>">

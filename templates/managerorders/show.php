@@ -12,6 +12,7 @@ use TexLab\Html\Html as Htmlt;
  * @var array $usersList Список пользователей
  * @var array $dishesList Список блюд
  * @var array $groupNames Имя групп
+ * @var int $user_id
  */
 
 echo Html::create("Pagination")
@@ -49,7 +50,8 @@ foreach ($fields as $field) {
      * */
     if ($field == 'users_id') {
         $form->addContent('<br>');
-        $form->addContent((new Select())->setName($field)->setId($field)->setData($usersList)->html());
+//        $form->addContent((new Select())->setName($field)->setId($field)->setData($usersList)->html());
+        $form->addContent(Html::create('Input')->setType('hidden')->setName($field)->setValue($user_id)->html());
         $form->addContent('<br>');
     } elseif ($field == 'date') {
         $form->addContent(Htmlt::input()->setType('datetime-local')->setName($field)->setId($field)->html());
