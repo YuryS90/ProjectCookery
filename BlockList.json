@@ -1,14 +1,17 @@
 {
-    "admin": [],
-    "user": [
-        "group",
-        "users"
-    ],
-    "default": [
-        "group",
-        "users",
-        "phonebook",
-        "guestbook",
-        "dishes"
-    ]
+  "admin": [],
+  "manager": [
+    "group",
+    "users"
+  ],
+  "user": [
+    "group",
+    "users",
+    "dishes"
+  ],
+  "default": [
+    "group",
+    "users",
+    "dishes"
+  ]
 }

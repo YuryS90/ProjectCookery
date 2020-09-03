@@ -18,7 +18,9 @@ class Input extends AbstractTag
             'password',
             'file',
             'checkbox',
-            'hidden'
+            'hidden',
+            'datetime-local',
+            'number'
         ])) {
             $this->type = " type='$type'";
         }

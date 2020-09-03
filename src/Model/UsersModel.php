@@ -35,6 +35,19 @@ class UsersModel extends DbEntity
         return $result;
     }
 
+    /*
+     * Возвращает список всех пользователей
+     * */
+    public function getUsers()
+    {
+        $data = $this->runSQL('SELECT `id`,`FIO` FROM `users`');
+        $result = [];
+        foreach ($data as $row) {
+            $result[$row['id']] = $row['FIO'];
+        }
+        return $result;
+    }
+
     public function getGroupIdByCode($cod)
     {
         return $this->runSQL("SELECT `id` FROM `group` where `cod` = '$cod'")[0]['id'];

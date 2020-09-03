@@ -10,9 +10,15 @@
             <li class="nav-item<?= $controllerType == '' ? ' active' : '' ?>">
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
+
             <li class="nav-item<?= $controllerType == 'auth' ? ' active' : '' ?>">
-                <a class="nav-link" href="?action=loginform&type=auth">Login</a>
+                <a class="nav-link" href="?action=loginform&type=auth">Авторизация</a>
             </li>
+
+            <li class="nav-item<?= $controllerType == 'reg' ? ' active' : '' ?>">
+                <a class="nav-link" href="?action=show&type=reg">Регистрация</a>
+            </li>
+
             <span class="navbar-text">
                     <?= !empty($_SESSION['user']) ? $_SESSION['user']['FIO'] . '(' . $_SESSION['user']['name'] . ')' : '' ?>
                 </span>

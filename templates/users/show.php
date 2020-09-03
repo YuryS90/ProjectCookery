@@ -1,11 +1,13 @@
 <?php
 
+use TexLab\Html\Select;
 use View\Html\Html;
 
 /** @var int $pageCount Количество страниц
  * @var array $fields Список полей таблицы
  * @var array $comments Комментарии к полям таблицы
  * @var string $type Имя контроллера
+ * @var array $groupNames Имя групп
  */
 // print_r($groupNames);
 
@@ -36,7 +38,7 @@ foreach ($fields as $field) {
         $form->addContent(Html::create('input')->setName($field)->setId($field)->html());
     } else {
         $form->addContent('<br>');
-        $form->addContent((new \TexLab\Html\Select())->setName($field)->setId($field)->setData($groupNames)->html());
+        $form->addContent((new Select())->setName($field)->setId($field)->setData($groupNames)->html());
         $form->addContent('<br>');
     }
 }

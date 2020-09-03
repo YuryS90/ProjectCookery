@@ -12,7 +12,7 @@ class AuthModel extends DbEntity
     {
         return $this
             ->reset()
-            ->setSelect('`cod`, `FIO`, `group`.`name`')
+            ->setSelect('`users`.`id`, `cod`, `FIO`, `group`.`name`')
             ->setFrom('`users`,`group`')
             ->setWhere('`users`.`group_id` = `group`.`id`')
             ->addWhere("BINARY `users`.`login`= '$login'")
@@ -20,4 +20,14 @@ class AuthModel extends DbEntity
             ->get()[0];
     }
 
+    public function checkLoginExists(string $login)
+    {
+        return (int)$this
+            ->reset()
+            ->setSelect('count(*) AS C')
+            ->setFrom('`users`,`group`')
+            ->setWhere('`users`.`group_id` = `group`.`id`')
+            ->addWhere("BINARY `users`.`login`= '$login'")
+            ->get()[0]['C'];
+    }
 }
