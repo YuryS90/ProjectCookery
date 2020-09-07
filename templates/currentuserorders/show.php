@@ -1,11 +1,11 @@
 <?php
 
-use TexLab\Html\Html as Htmlt;
 use TexLab\Html\Select;
 use View\Html\Html;
+use TexLab\Html\Html as Htmlt;
 
 /**
- * Просмотр заказов всех менеджеров
+ * Мои заказы с кнопкой "отменить заказ"
  *
  * @var int $pageCount Количество страниц
  * @var array $fields Список полей таблицы
@@ -14,10 +14,12 @@ use View\Html\Html;
  * @var array $usersList Список пользователей
  * @var array $dishesList Список блюд
  * @var array $groupNames Имя групп
- * @var array $table данные таблицы
+ * @var array $table
+ * @var int $user_id
  */
 
-echo Html::create('Table')
+echo Html::create('TableEdited')
+    ->setControllerType($type)
     ->setHeaders($comments)
     ->data($table)
     ->setClass('table')
@@ -30,8 +32,6 @@ echo Html::create("Pagination")
     ->setPageCount($pageCount)
     ->html();
 echo "</div>";
-
-
 
 
 

@@ -6,37 +6,36 @@ use View\Html\Html;
  * @var string $type
  * @var array $fields
  * @var array $comments
+ * @var array $groupNames
  */
 
 $form = Html::create('Form')
     ->setMethod('POST')
     ->setAction("?action=edit&type=$type")
-    ->setClass('form');
-
-
-// foreach ($fields as $field) {
-//     $form->addContent(Html::create('Label')->setFor($field)->setInnerText($comments[$field])->html());
-
-//     if ($field != 'group_id') {
-//         $form->addContent(Html::create('input')->setName($field)->setId($field)->html());
-//     } else {
-//         $form->addContent('<br>');
-//         $form->addContent((new \TexLab\Html\Select())->setName($field)->setId($field)->setData($groupNames)->html());
-//         $form->addContent('<br>');
-//     }
-// }
+    ->setId('addForm');
 
 foreach ($fields as $name => $value) {
-    $form->addContent(Html::create('Label')->setFor($name)->setInnerText($comments[$name])->html());
+    $form
+        ->addContent(
+            Html::create('Label')
+                ->setClass('comment')
+                ->setFor($name)
+                ->setInnerText($comments[$name])
+                ->html());
     if ($name != 'group_id') {
         $form->addContent(Html::create('input')->setName($name)->setId($name)->setValue($value)->html());
     } else {
-        $form->addContent('<br>');
-        $form->addContent((new \TexLab\Html\Select())->setName($name)->setId($name)->setSelectedValues([$value])->setData($groupNames)->html());
-        $form->addContent('<br>');
+        $form
+            ->addContent(
+                (new \TexLab\Html\Select())
+                    ->setName($name)
+                    ->setId($name)
+                    ->setSelectedValues([$value])
+                    ->setData($groupNames)
+                    ->html());
     }
 }
 
 echo $form->addContent(Html::create('Input')->setType('hidden')->setName('id')->setValue($id)->html())
-    ->addContent(Html::create('Input')->setType('submit')->setValue('OK')->html())
+    ->addContent(Html::create('Input')->setType('submit')->setValue('Применить')->html())
     ->html();

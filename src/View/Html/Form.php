@@ -7,6 +7,7 @@ class Form extends AbstractTag
     protected $action = "";
     protected $method = "GET";
     protected $content = "";
+//    protected $classg;
 
     public function setAction(string $action)
     {
@@ -14,6 +15,11 @@ class Form extends AbstractTag
         return $this;
     }
 
+//    public function addClass(string $class1, string $class2)
+//    {
+//        $this->classg = " class='$class1 $class2'";
+//        return $this;
+//    }
 
     public function setContent(string $content)
     {

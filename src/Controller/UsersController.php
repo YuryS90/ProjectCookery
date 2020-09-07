@@ -56,6 +56,7 @@ class UsersController extends AbstractTableController
 //        $data['post']['password'] = md5($data['post']['password'] . Config::SALT);
         parent::actionAdd($data);
     }
+
     public function actionEdit(array $data)
     {
 //        $data['post']['password'] = md5($data['post']['password'] . Config::SALT);
