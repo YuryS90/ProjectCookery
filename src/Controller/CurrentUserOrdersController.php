@@ -6,14 +6,14 @@ namespace Controller;
 use View\View;
 use Core\Config;
 
-class ManagerOrdersController extends OrdersController
+class CurrentUserOrdersController extends OrdersController
 {
     public function __construct(View $view)
     {
         parent::__construct($view);
         $this
             ->view
-            ->setFolder("managerorders");
+            ->setFolder("currentuserorders");
     }
 
     public function actionShow(array $data)

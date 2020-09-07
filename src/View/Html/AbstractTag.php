@@ -14,6 +14,12 @@ abstract class AbstractTag
         return $this;
     }
 
+    public function addClass(string $class)
+    {
+        $this->class .= " class='$class'";
+        return $this;
+    }
+
     public function setStyle(string $style)
     {
         $this->style = " style='$style'";

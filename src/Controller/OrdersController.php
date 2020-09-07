@@ -66,24 +66,6 @@ class OrdersController extends AbstractTableController
 
     public function actionShow(array $data)
     {
-        
-        //        $this->usersTable->getUsers();
-        /*
-         * Добавляем данные
-         * */
-        // $this->view->addData(
-        //     [
-        //         "usersList" => $this->usersTable->getUsers(),
-        //         "dishesList" => $this->dishesTable->getDishes(),
-        //         'table' => $this
-        //             ->table
-        //             ->reset()
-        //             ->setPageSize(Config::PAGE_SIZE)
-        //             ->getOrdersPage($data['get']['page'] ?? 1)
-
-        //     ]
-        // );
-
         $this
             ->view
             ->setTemplate('show')
@@ -115,7 +97,8 @@ class OrdersController extends AbstractTableController
 
         $this->view->addData(
             [
-                "usersList" => $this->usersTable->getUsers()
+                "usersList" => $this->usersTable->getUsers(),
+                "dishesList" => $this->dishesTable->getDishes()
             ]
         );
     }

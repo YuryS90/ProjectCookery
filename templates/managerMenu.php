@@ -15,8 +15,8 @@
                 <a class="nav-link" href="?action=show&type=dishes">Блюда</a>
             </li>
 
-            <li class="nav-item<?= $controllerType == 'managerorders' ? ' active' : '' ?>">
-                <a class="nav-link" href="?action=show&type=managerorders">Заказы менеджера</a>
+            <li class="nav-item<?= $controllerType == 'currentuserorders' ? ' active' : '' ?>">
+                <a class="nav-link" href="?action=show&type=currentuserorders">Мои заказы</a>
             </li>
 
             <li class="nav-item<?= $controllerType == 'auth' ? ' active' : '' ?>">

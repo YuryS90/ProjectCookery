@@ -11,6 +11,10 @@
                     <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
 
+                <li class="nav-item<?= $controllerType == 'orders' ? ' active' : '' ?>">
+                    <a class="nav-link" href="?action=show&type=currentuserorders">Мои заказы</a>
+<!--                    <a class="nav-link" href="?action=show&type=orders">Работа с заказами</a>-->
+                </li>
 
                 <li class="nav-item<?= $controllerType == 'auth' ? ' active' : '' ?>">
                     <a class="nav-link" href="?action=logout&type=auth">Выход</a>
