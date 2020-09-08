@@ -102,4 +102,12 @@ class OrdersController extends AbstractTableController
             ]
         );
     }
+
+    // Отмена заказа
+    public function actionCancelEdit(array $data)
+    {
+        $id = $data['get']['id'];
+        $this->table->getEditStatus($id);
+        $this->redirect('?action=show&type=' . $this->getClassName());
+    }
 }
