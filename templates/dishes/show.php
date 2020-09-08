@@ -10,42 +10,56 @@ use View\Html\Html;
  * @var array $table
  */
 
-foreach ($table as &$row) {
-    $ext = pathinfo($row['imgdishes'], PATHINFO_EXTENSION);
-    $row['imgdishes'] = "<img src='images/dishes/$row[id].$ext' class='img'>";
+foreach ($table as &$value) {
+    $ext = pathinfo($value['imgdishes'], PATHINFO_EXTENSION);
+    $value['imgdishes'] = "<img src='images/dishes/$value[id].$ext' class='card-img-top' style='height:200px'>";
 }
 
-echo Html::create('TableEdited')
-    ->setControllerType($type)
-    ->setHeaders($comments)
-    ->data($table)
-    ->setClass('table')
-    ->html();
+// echo Html::create('TableEdited')
+//     ->setControllerType($type)
+//     ->setHeaders($comments)
+//     ->data($table)
+//     ->setClass('table')
+//     ->html();
+    // print_r($table);
+?>
+<section class="products">
+    <div class="container">
+        <?php
+        
+        echo '<div class="row">';
+        foreach ($table as $row) {
+            echo '<div class="col-md-3 col-sm-6">';
+            echo '<div class="card">';
+            echo $row['imgdishes'];
+            echo '<div class="card-body">';
+            echo '<h5 class="card-title">Состав:</h5>';
+            echo '<p class="card-text"  style="height:100px">'.$row['composition'].'</p>';
+            echo '</div>';
+            echo '<ul class="list-group list-group-flush">';
+            echo '<li class="list-group-item"><b>'.$row['namedishes'].'</b></li>';
+            echo '</ul>';
+            echo '<div class="card-body">';
+            echo "<button type='button' class='btn btn-danger dropdown-toggle'" .
+                "data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Опции</button>\n" .
+                "<div class='dropdown-menu'>" .
+                "<a class='dropdown-item' href='?action=del&type=$type&id=$row[id]'>Удалить</a>" .
+                "<a class='dropdown-item' href='?action=showedit&type=$type&id=$row[id]'>Редактировать</a>" .
+                "</div>";
+            echo '</div>';
+            echo '</div>';
+            echo "</div>\n\n";
+            if ((($key + 1) % 4 == 0) && ($key != (count($table) -1))) {
+                echo "</div>\n\n\n\n\n\n";
+                echo '<div class="row">';
+            }
+        }
+        echo '</div>';
+        ?>
 
-//echo "<div class='col-md-3 col-sm-6'>";
-//echo "<div class='card'>";
-//echo "<img src='../../public/images/card/bliny.jpg' class='card-img-top'>";
-//echo "<div class='card-body'>";
-//echo "<h5 class='card-title'>" . "Состав:";
-//echo "</h5>";
-//echo "<p class='card-text'>" . "Компонент 1, компонент 2, компонент 3, компонент 4, компонент 5, компонент
-//                6, компонент 7, компонент 8";
-//echo "</p>";
-//echo "</div>";
-//echo "<ul class='list-group list-group-flush'>";
-//echo "<li class='list-group-item'>" . "<b>" . "Блюдо 1" . "</b>" . "</li>";
-//echo "<li class='list-group-item text-danger'>" . "3 руб" . "</li>";
-//echo "</ul>";
-//echo "<div class='card-body'>";
-//echo Html::create("A")
-//    ->setHref('#')
-//    ->setClass('btn btn-primary buy')
-//    ->setInnerText('Заказать')
-//    ->html();
-//echo "</div>";
-//echo "</div>";
-//echo "</div>";
-
+    </div>
+</section>
+<?php
 
 echo "<div class='contPag'>";
 echo Html::create("Pagination")
@@ -65,7 +79,7 @@ $form = Html::create('Form')
     ->setMethod('POST')
     ->setAction("?action=add&type=$type")
     ->setClass('hidden')
-//    ->addClass('hidden', 'form')
+    //    ->addClass('hidden', 'form')
     ->setId('addForm');
 
 foreach ($fields as $field) {
@@ -87,7 +101,6 @@ foreach ($fields as $field) {
                     ->setType('file')
                     ->html()
             );
-
     } elseif ($field == 'composition') {
         $form
             ->addContent(
@@ -98,7 +111,6 @@ foreach ($fields as $field) {
                     ->setId($field)
                     ->html()
             );
-
     } else {
         $form
             ->addContent(
@@ -132,7 +144,7 @@ echo $form->html();
 <div id="shadow" class="hidden"></div>
 
 <script>
-    let fun = function () {
+    let fun = function() {
 
         let addButton = document.getElementById("addButton");
         addButton.innerText = addButton.innerText === "Закрыть окно" ? "Добавить блюдо" : "Закрыть окно"
