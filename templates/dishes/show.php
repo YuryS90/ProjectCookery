@@ -22,29 +22,30 @@ echo Html::create('TableEdited')
     ->setClass('table')
     ->html();
 
-//echo "<div class='col-md-3 col-sm-6'>";
-//echo "<div class='card'>";
-//echo "<img src='../../public/images/card/bliny.jpg' class='card-img-top'>";
-//echo "<div class='card-body'>";
-//echo "<h5 class='card-title'>" . "Состав:";
-//echo "</h5>";
-//echo "<p class='card-text'>" . "Компонент 1, компонент 2, компонент 3, компонент 4, компонент 5, компонент
+    
+// echo "<div class='col-md-3 col-sm-6'>";
+// echo "<div class='card'>";
+// echo "<img src='../../public/images/card/bliny.jpg' class='card-img-top'>";
+// echo "<div class='card-body'>";
+// echo "<h5 class='card-title'>" . "Состав:";
+// echo "</h5>";
+// echo "<p class='card-text'>" . "Компонент 1, компонент 2, компонент 3, компонент 4, компонент 5, компонент
 //                6, компонент 7, компонент 8";
-//echo "</p>";
-//echo "</div>";
-//echo "<ul class='list-group list-group-flush'>";
-//echo "<li class='list-group-item'>" . "<b>" . "Блюдо 1" . "</b>" . "</li>";
-//echo "<li class='list-group-item text-danger'>" . "3 руб" . "</li>";
-//echo "</ul>";
-//echo "<div class='card-body'>";
-//echo Html::create("A")
+// echo "</p>";
+// echo "</div>";
+// echo "<ul class='list-group list-group-flush'>";
+// echo "<li class='list-group-item'>" . "<b>" . "Блюдо 1" . "</b>" . "</li>";
+// echo "<li class='list-group-item text-danger'>" . "3 руб" . "</li>";
+// echo "</ul>";
+// echo "<div class='card-body'>";
+// echo Html::create("A")
 //    ->setHref('#')
 //    ->setClass('btn btn-primary buy')
 //    ->setInnerText('Заказать')
 //    ->html();
-//echo "</div>";
-//echo "</div>";
-//echo "</div>";
+// echo "</div>";
+// echo "</div>";
+// echo "</div>";
 
 
 echo "<div class='contPag'>";
