@@ -18,7 +18,7 @@ use TexLab\Html\Html as Htmlt;
  * @var int $user_id
  */
 
-echo Html::create('TableEdited')
+echo Html::create('TableCancel')
     ->setControllerType($type)
     ->setHeaders($comments)
     ->data($table)

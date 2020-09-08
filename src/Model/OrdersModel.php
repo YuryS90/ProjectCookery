@@ -30,14 +30,14 @@ class OrdersModel extends DbEntity
     public function getOrdersPageUserFilter(int $page, int $user_id)
     {
         return $this
-        ->reset()
-        ->setSelect('`orders`.`id`,`users`.`FIO` AS users_id,`dishes`.`namedishes` AS dishes_id,`orders`.`count`,`orders`.`date`,`orders`.`status`')
-        ->setFrom('`users`, `orders`, `dishes`')
-        ->setWhere('`users`.`id` = `orders`.`users_id`') // связь
-        ->addWhere('`dishes`.`id` = `orders`.`dishes_id`')
-        ->addWhere("`orders`.`users_id` = $user_id")
-        ->setOrderBy('`orders`.`id`') // по какому полю сортирование
-        ->getPage($page);
+            ->reset()
+            ->setSelect('`orders`.`id`,`users`.`FIO` AS users_id,`dishes`.`namedishes` AS dishes_id,`orders`.`count`,`orders`.`date`,`orders`.`status`')
+            ->setFrom('`users`, `orders`, `dishes`')
+            ->setWhere('`users`.`id` = `orders`.`users_id`') // связь
+            ->addWhere('`dishes`.`id` = `orders`.`dishes_id`')
+            ->addWhere("`orders`.`users_id` = $user_id")
+            ->setOrderBy('`orders`.`id`') // по какому полю сортирование
+            ->getPage($page);
     }
 
     public function getOrdersPageByUserCod(int $page, string $user_cod)
@@ -52,5 +52,10 @@ class OrdersModel extends DbEntity
             ->addWhere("`group`.`cod` = '$user_cod'")
             ->setOrderBy('`orders`.`id`') // по какому полю сортирование
             ->getPage($page);
+    }
+
+    public function getEditStatus(string $id)
+    {
+        $this->runSQL("UPDATE orders SET `status`= 'Отменён' WHERE id = '$id';");
     }
 }
