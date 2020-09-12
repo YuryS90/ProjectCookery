@@ -15,13 +15,13 @@ foreach ($table as &$value) {
     $value['imgdishes'] = "<img src='images/dishes/$value[id].$ext' class='img'>";
 }
 
- echo Html::create('TableEdited')
-     ->setControllerType($type)
-     ->setHeaders($comments)
-     ->data($table)
-     ->setClass('table')
-     ->html();
-    // print_r($table);
+echo Html::create('TableEdited')
+    ->setControllerType($type)
+    ->setHeaders($comments)
+    ->data($table)
+    ->setClass('table')
+    ->html();
+// print_r($table);
 ?>
 <!--<section class="products">-->
 <!--    <div class="container">-->
@@ -38,10 +38,10 @@ foreach ($table as &$value) {
 //            echo $row['imgdishes'];
 //            echo '<div class="card-body">';
 //            echo '<h5 class="card-title">Состав:</h5>';
-//            echo '<p class="card-text"  style="height:100px">'.$row['composition'].'</p>';
+//            echo '<p class="card-text"  style="height:100px">' . $row['composition'] . '</p>';
 //            echo '</div>';
 //            echo '<ul class="list-group list-group-flush">';
-//            echo '<li class="list-group-item"><b>'.$row['namedishes'].'</b></li>';
+//            echo '<li class="list-group-item"><b>' . $row['namedishes'] . '</b></li>';
 //            echo '</ul>';
 //            echo '<div class="card-body">';
 //            echo "<button type='button' class='btn btn-danger dropdown-toggle'" .
@@ -53,14 +53,14 @@ foreach ($table as &$value) {
 //            echo '</div>';
 //            echo '</div>';
 //            echo "</div>\n\n";
-//            if ((($key + 1) % 4 == 0) && ($key != (count($table) -1))) {
-//                echo "</div>\n\n\n\n\n\n";
-//                echo '<div class="row">';
-//            }
+
+//            echo "</div>\n\n\n\n\n\n";
+//            echo '<div class="row">';
+//
 //        }
 //        echo '</div>';
         ?>
-<!---->
+
 <!--    </div>-->
 <!--</section>-->
 <?php
@@ -148,7 +148,7 @@ echo $form->html();
 <div id="shadow" class="hidden"></div>
 
 <script>
-    let fun = function() {
+    let fun = function () {
 
         let addButton = document.getElementById("addButton");
         addButton.innerText = addButton.innerText === "Закрыть окно" ? "Добавить блюдо" : "Закрыть окно"

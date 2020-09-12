@@ -15,8 +15,6 @@ class DishesModel extends DbEntity
     }
 
 
-
-
     /*
      * Возвращает список всех блюд
      * */

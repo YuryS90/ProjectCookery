@@ -54,8 +54,21 @@ class OrdersModel extends DbEntity
             ->getPage($page);
     }
 
+    /*
+     * Изменение статуса
+     * */
     public function getEditStatus(string $id)
     {
         $this->runSQL("UPDATE orders SET `status`= 'Отменён' WHERE id = '$id';");
+    }
+
+    /*
+     * Добавление заказов
+     * */
+    public function getAddOrders(string $users_id, string $dishes_id)
+    {
+        $data = date('Y-m-d H:i:s');
+        $this->runSQL("INSERT INTO orders (users_id, dishes_id, count, date, status)" .
+            "VALUES ('$users_id', '$dishes_id', '1', '$data', 'Ожидание');");
     }
 }

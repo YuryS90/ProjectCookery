@@ -16,6 +16,7 @@ class OrdersController extends AbstractTableController
     protected $usersTable;
     protected $dishesTable;
 
+
     /*
      * в конструкторе предок получет соединение с БД
      * делаем ещё одну подключение. мы хотим получить список пользователей из таблицы users
@@ -34,6 +35,7 @@ class OrdersController extends AbstractTableController
                 'password' => Config::MYSQL_PASSWORD,
                 'dbname' => Config::MYSQL_DATABASE
             ])
+
         );
         /*
          * создаём экземпляр UsersModel, где должны передать подключение к БД
@@ -66,6 +68,7 @@ class OrdersController extends AbstractTableController
 
     public function actionShow(array $data)
     {
+//        print_r($_SESSION['user']['id']);
         $this
             ->view
             ->setTemplate('show')
@@ -84,7 +87,8 @@ class OrdersController extends AbstractTableController
             ]);
         // в show будем ловить usersList + ordersList
         //        print_r($this->usersTable->getUsers());
-        //        print_r($this->ordersTable->getDishes());
+//                print_r($this->ordersTable->getDishes());
+//        print_r($this->dishesTable->getDishes());
     }
 
     public function actionShowEdit(array $data)
@@ -106,8 +110,13 @@ class OrdersController extends AbstractTableController
     // Отмена заказа
     public function actionCancelEdit(array $data)
     {
+
         $id = $data['get']['id'];
         $this->table->getEditStatus($id);
         $this->redirect('?action=show&type=' . $this->getClassName());
     }
+
+
+
+
 }

@@ -59,4 +59,16 @@ class CurrentUserOrdersController extends OrdersController
                 'pageCount' => $this->table->pageCount()
             ]);
     }
+
+    // добавление заказа
+    public function actionAddOrder(array $data)
+    {
+//        print_r($data);
+//        print_r($_SESSION);
+        $users_id = $_SESSION['user']['id'];
+        $dishes_id = $data['get']['id'];
+
+        $this->table->getAddOrders($users_id, $dishes_id);
+        $this->redirect('?action=show&type=currentuserorders');
+    }
 }
