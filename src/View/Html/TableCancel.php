@@ -16,7 +16,7 @@ class TableCancel extends TableEdited
                 $str .= "\t\t<td>$cell</td>\n";
             }
             $str .= "\t\t<td>" .
-                "<a role='button' href='?action=&type=$this->type&id=$row[id]' class='btn btn-primary'>" .
+                "<a role='button' href='?action=showedit&type=$this->type&id=$row[id]' class='btn btn-primary'>" .
                 "Изменить заказ</a><br>".
                 "<a role='button' href='?action=canceledit&type=$this->type&id=$row[id]' class='btn btn-danger'>" .
                 "Отменить заказ</a>".
