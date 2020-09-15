@@ -41,4 +41,12 @@ class DishesModel extends DbEntity
             ->setWhere("`statusdish` = 'Актуально'")
             ->getPage($page);
     }
+
+    /*
+     * подсчёт страниц
+    * */
+    public function pageCountDishesStatus()
+    {
+        return $this->runSQL("SELECT COUNT(*) as count FROM dishes WHERE statusdish='Актуально'");
+    }
 }
