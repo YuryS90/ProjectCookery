@@ -1,6 +1,3 @@
-<?php
-
-/** @var string $controllerType */ ?>
 <!DOCTYPE html>
 <html lang="en">
 

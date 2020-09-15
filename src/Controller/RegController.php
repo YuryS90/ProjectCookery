@@ -37,10 +37,11 @@ class RegController extends UsersController
     {
 
         $data['post']['group_id'] = $this->table->getGroupIdByCode('user');
+        parent::actionAdd($data);
 
-        $this->table->add($data['post']);
-
-        $this->redirect('?action=show&type=напишу сюда для посетителей' . $this->getClassName());
+//        $this->table->add($data['post']);
+//
+//        $this->redirect('?action=show&type=напишу сюда для посетителей' . $this->getClassName());
     }
 
 

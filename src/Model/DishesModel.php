@@ -27,4 +27,18 @@ class DishesModel extends DbEntity
         }
         return $result;
     }
+
+    /*
+    * Фильтр статуса активных блюд
+    * */
+    public function getDishesStatusFilter(int $page)
+    {
+        // Сам запрос: SELECT * FROM dishes WHERE statusdish = 'Актуально'
+        return $this
+            ->reset()
+            ->setSelect('*')
+            ->setFrom('`dishes`')
+            ->setWhere("`statusdish` = 'Актуально'")
+            ->getPage($page);
+    }
 }

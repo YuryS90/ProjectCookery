@@ -17,12 +17,12 @@
 <body>
 
 <?php
-if (!empty($_SESSION['errors'])) {
-    foreach ($_SESSION['errors'] as $error) {
-        echo "<div class='alert alert-danger' role='alert'>$error</div>";
-    }
-    unset($_SESSION['errors']);
-}
+//if (!empty($_SESSION['errors'])) {
+//    foreach ($_SESSION['errors'] as $error) {
+//        echo "<div class='alert alert-danger' role='alert'>$error</div>";
+//    }
+//    unset($_SESSION['errors']);
+//}
 
 $this->body();
 ?>

@@ -1,5 +1,6 @@
 <?php
 
+use TexLab\Html\Select;
 use View\Html\Html;
 
 
@@ -25,7 +26,7 @@ echo Html::create('TableEdited')
 ?>
 <!--<section class="products">-->
 <!--    <div class="container">-->
-        <?php
+<?php
 //        foreach ($table as &$value) {
 //            $ext = pathinfo($value['imgdishes'], PATHINFO_EXTENSION);
 //            $value['imgdishes'] = "<img src='images/dishes/$value[id].$ext' class='card-img-top' style='height:200px'>";
@@ -59,7 +60,7 @@ echo Html::create('TableEdited')
 //
 //        }
 //        echo '</div>';
-        ?>
+?>
 
 <!--    </div>-->
 <!--</section>-->
@@ -115,6 +116,19 @@ foreach ($fields as $field) {
                     ->setId($field)
                     ->html()
             );
+    } elseif ($field == 'statusdish') {
+        $form
+            ->addContent((new Select())
+                ->setName($field)
+                ->setId($field)
+                ->setData(
+                    [
+                        'Актуально' => 'Актуально',
+                        'Не актуально' => 'Не актуально'
+                    ]
+                )
+                ->html());
+
     } else {
         $form
             ->addContent(

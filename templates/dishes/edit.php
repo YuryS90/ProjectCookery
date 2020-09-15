@@ -1,5 +1,6 @@
 <?php
 
+use TexLab\Html\Select;
 use View\Html\Html;
 
 /** @var int $id
@@ -47,6 +48,19 @@ foreach ($fields as $name => $value) {
                     ->html()
             );
 
+    } elseif ($name == 'statusdish') {
+        $form
+            ->addContent((new Select())
+                ->setName($name)
+                ->setId($name)
+                ->setSelectedValues([$value])
+                ->setData(
+                    [
+                        'Актуально' => 'Актуально',
+                        'Не актуально' => 'Не актуально'
+                    ]
+                )
+                ->html());
     } else {
         $form
             ->addContent(
