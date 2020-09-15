@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Сен 15 2020 г., 10:00
+-- Время создания: Сен 15 2020 г., 21:34
 -- Версия сервера: 8.0.19
--- Версия PHP: 7.4.4
+-- Версия PHP: 7.3.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -36,22 +36,23 @@ CREATE TABLE `dishes` (
   `composition` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT 'Состав',
   `volume` int DEFAULT NULL COMMENT 'Объём порции',
   `unit` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT 'Ед.изм.',
-  `imgdishes` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT 'Изображение блюда'
+  `imgdishes` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT 'Изображение блюда',
+  `price` float DEFAULT NULL COMMENT 'Цена, руб.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `dishes`
 --
 
-INSERT INTO `dishes` (`id`, `namedishes`, `statusdish`, `composition`, `volume`, `unit`, `imgdishes`) VALUES
-(1, 'Блюдо1', 'Актуально', 'Сomponent1, component2, component3, component4, component5', 40, 'г', 'intro3.jpg'),
-(2, 'Блюдо2', 'Актуально', 'Component1, component2, component3, component4', 10, 'шт', 'bliny.jpg'),
-(7, 'Блюдо 7', 'Актуально', 'без состава', 7, 'кг', 'losos.jpg'),
-(8, 'Блюдо 8', 'Актуально', 'Component1', 1, 'кг', 'intro2.jpg'),
-(9, 'Блюдо 9', 'Не актуально', 'без состава', 3, 'кг', 'intro.jpg'),
-(10, 'Блюдо 10', 'Не актуально', 'Сomponent1, component2, component3, component4, component5', 1, 'шт', 'salat.jpg'),
-(11, 'Блюдо под заказ', 'Не актуально', 'без состава', 1, 'кг', 'mjaso.jpg'),
-(14, 'Блюдо 17', 'Не актуально', 'под заказ', 1500, 'г', 'losos.jpg');
+INSERT INTO `dishes` (`id`, `namedishes`, `statusdish`, `composition`, `volume`, `unit`, `imgdishes`, `price`) VALUES
+(1, 'Блюдо1', 'Актуально', 'Сomponent1, component2, component3, component4, component5', 40, 'г', 'intro3.jpg', 2),
+(2, 'Блюдо2', 'Актуально', 'Component1, component2, component3, component4', 10, 'шт', 'bliny.jpg', 3),
+(7, 'Блюдо 7', 'Актуально', 'без состава', 7, 'кг', 'losos.jpg', 4),
+(8, 'Блюдо 8', 'Актуально', 'Component1', 1, 'кг', '', 3),
+(9, 'Блюдо 9', 'Не актуально', 'без состава', 3, 'кг', '', 3),
+(10, 'Блюдо 10', 'Не актуально', 'Сomponent1, component2, component3, component4, component5', 1, 'шт', 'salat.jpg', 2.5),
+(11, 'Блюдо под заказ', 'Не актуально', 'без состава', 1, 'кг', 'mjaso.jpg', 30.4),
+(14, 'Блюдо 17', 'Не актуально', 'под заказ', 1500, 'г', 'losos.jpg', 1.1);
 
 -- --------------------------------------------------------
 
@@ -96,7 +97,7 @@ CREATE TABLE `orders` (
 INSERT INTO `orders` (`id`, `users_id`, `dishes_id`, `count`, `date`, `status`) VALUES
 (10, 30, 2, 1, '2020-09-13 09:50:34', 'Изменён(Ожидание)'),
 (11, 49, 9, 10, '2020-09-06 20:32:00', 'Ожидание'),
-(12, 50, 1, 15, '2020-09-02 12:43:00', 'Ожидание'),
+(12, 50, 1, 15, '2020-09-15 20:49:11', 'Отменён'),
 (14, 30, 7, 10, '2020-09-13 09:54:44', 'Изменён(Ожидание)'),
 (15, 30, 1, 3, '2020-09-03 22:31:00', 'Ожидание'),
 (16, 30, 1, 10, '2020-09-03 22:32:00', 'Ожидание'),
@@ -111,7 +112,8 @@ INSERT INTO `orders` (`id`, `users_id`, `dishes_id`, `count`, `date`, `status`) 
 (30, 49, 14, 1, '2020-09-10 18:33:33', 'Отменён'),
 (31, 49, 7, 1, '2020-09-12 09:07:14', 'Ожидание'),
 (32, 49, 7, 1, '2020-09-12 09:09:01', 'Ожидание'),
-(33, 50, 8, 1, '2020-09-14 07:50:39', 'Ожидание');
+(33, 50, 8, 2, '2020-09-15 21:02:22', 'Отменён'),
+(34, 50, 7, 1, '2020-09-15 21:03:51', 'Отменён');
 
 -- --------------------------------------------------------
 
@@ -194,7 +196,7 @@ ALTER TABLE `group`
 -- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=34;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT для таблицы `users`

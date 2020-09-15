@@ -18,6 +18,7 @@ class CurrentUserOrdersController extends OrdersController
 
     public function actionShow(array $data)
     {
+        // print_r($this->table->getTotalPrice($_SESSION['user']['id']));
         $this
             ->view
             ->setTemplate('show')
@@ -25,6 +26,7 @@ class CurrentUserOrdersController extends OrdersController
                 "user_id" => $_SESSION['user']['id'],
                 "usersList" => $this->usersTable->getUsers(),
                 "dishesList" => $this->dishesTable->getDishes(),
+                "totalPrice" =>$this->table->getTotalPrice($_SESSION['user']['id']),
                 'table' => $this
                     ->table
                     ->reset()

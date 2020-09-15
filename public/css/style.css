@@ -130,5 +130,14 @@
     user-select: none;
 }
 
+.price  {
+    color: red;
+}
+
+.price span {
+    text-transform: uppercase;
+    color: blue;
+}
+
 
 

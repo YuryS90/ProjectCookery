@@ -25,6 +25,10 @@ echo Html::create('TableCancel')
     ->setClass('table')
     ->html();
 
+echo "<div class='price'><span>Вы сделали заказ на:</span> ";
+echo $totalPrice . "руб.";
+echo "</div>";
+
 echo "<div class='contPag'>";
 echo Html::create("Pagination")
     ->setClass('pagination')
@@ -33,7 +37,5 @@ echo Html::create("Pagination")
     ->html();
 echo "</div>";
 
-foreach ($fields as $field) {
 
-}
 

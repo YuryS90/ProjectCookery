@@ -71,4 +71,12 @@ class OrdersModel extends DbEntity
         $this->runSQL("INSERT INTO orders (users_id, dishes_id, count, date, status)" .
             "VALUES ('$users_id', '$dishes_id', '1', '$data', 'Ожидание');");
     }
+
+    /*
+     * Вывод общей цены
+     * */
+    public function getTotalPrice(int $user_id)
+    {
+        return (int) $this->runSQL("SELECT SUM(dishes.price * orders.count) AS 'sum' FROM dishes, orders, users WHERE dishes.id = orders.dishes_id AND orders.users_id = users.id AND users.id = $user_id AND orders.status <> 'Отменён'")[0]['sum'];
+    }
 }

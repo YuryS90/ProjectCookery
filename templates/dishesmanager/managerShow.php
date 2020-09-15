@@ -14,18 +14,19 @@ foreach ($table as &$value) {
     $value['imgdishes'] = "<img src='images/dishes/$value[id].$ext' class='img'>";
 }
 
- echo Html::create('TableToOrder')
-     ->setControllerType($type)
-     ->setHeaders($comments)
-     ->data($table)
-     ->setClass('table')
-     ->html();
-
-
-echo "<div class='contPag'>";
-echo Html::create("Pagination")
-    ->setClass('pagination')
+echo Html::create('TableToOrder')
     ->setControllerType($type)
-    ->setPageCount($pageCount)
+    ->setHeaders($comments)
+    ->data($table)
+    ->setClass('table')
     ->html();
-echo "</div>";
+
+if ($pageCount > 1) {
+    echo "<div class='contPag'>";
+    echo Html::create("Pagination")
+        ->setClass('pagination')
+        ->setControllerType($type)
+        ->setPageCount($pageCount)
+        ->html();
+    echo "</div>";
+}

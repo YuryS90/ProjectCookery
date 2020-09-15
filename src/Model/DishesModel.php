@@ -3,7 +3,7 @@
 
 namespace Model;
 
-
+use Core\Config;
 use mysqli;
 use TexLab\MyDB\DbEntity;
 
@@ -47,6 +47,8 @@ class DishesModel extends DbEntity
     * */
     public function pageCountDishesStatus()
     {
-        return $this->runSQL("SELECT COUNT(*) as count FROM dishes WHERE statusdish='Актуально'");
+        // print_r($this->runSQL("SELECT COUNT(*) as count FROM dishes WHERE statusdish='Актуально'"));
+        return ceil($this->runSQL("SELECT COUNT(*) as count FROM dishes WHERE statusdish='Актуально'")[0]['count'] / $this->pageSize);
     }
+
 }
