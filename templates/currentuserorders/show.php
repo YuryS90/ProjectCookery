@@ -33,5 +33,7 @@ echo Html::create("Pagination")
     ->html();
 echo "</div>";
 
+foreach ($fields as $field) {
 
+}
 
