@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Сен 03 2020 г., 07:17
+-- Время создания: Сен 15 2020 г., 10:00
 -- Версия сервера: 8.0.19
 -- Версия PHP: 7.4.4
 
@@ -32,6 +32,7 @@ USE `originalcp`;
 CREATE TABLE `dishes` (
   `id` int NOT NULL COMMENT '№',
   `namedishes` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT 'Название блюда',
+  `statusdish` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'Статус блюда',
   `composition` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT 'Состав',
   `volume` int DEFAULT NULL COMMENT 'Объём порции',
   `unit` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT 'Ед.изм.',
@@ -42,13 +43,15 @@ CREATE TABLE `dishes` (
 -- Дамп данных таблицы `dishes`
 --
 
-INSERT INTO `dishes` (`id`, `namedishes`, `composition`, `volume`, `unit`, `imgdishes`) VALUES
-(1, 'Блюдо1', 'Сomponent1, component2, component3, component4, component5', 400, 'г', 'sup.jpg'),
-(2, 'Блюдо2', 'Component1, component2, component3, component4', 10, 'шт', 'bliny.jpg'),
-(7, 'Блюдо 777888', '777', 77, 'кг', 'kurinyekotlety.jpg'),
-(8, 'Блюдо 8', 'Component1', 1, 'кг', 'intro2.jpg'),
-(9, 'Блюдо 9', 'без состава', 3, 'кг', 'sup.jpg'),
-(10, 'Блюдо 10', 'Сomponent1, component2, component3, component4, component5', 1, 'шт', 'salat.jpg');
+INSERT INTO `dishes` (`id`, `namedishes`, `statusdish`, `composition`, `volume`, `unit`, `imgdishes`) VALUES
+(1, 'Блюдо1', 'Актуально', 'Сomponent1, component2, component3, component4, component5', 40, 'г', 'intro3.jpg'),
+(2, 'Блюдо2', 'Актуально', 'Component1, component2, component3, component4', 10, 'шт', 'bliny.jpg'),
+(7, 'Блюдо 7', 'Актуально', 'без состава', 7, 'кг', 'losos.jpg'),
+(8, 'Блюдо 8', 'Актуально', 'Component1', 1, 'кг', 'intro2.jpg'),
+(9, 'Блюдо 9', 'Не актуально', 'без состава', 3, 'кг', 'intro.jpg'),
+(10, 'Блюдо 10', 'Не актуально', 'Сomponent1, component2, component3, component4, component5', 1, 'шт', 'salat.jpg'),
+(11, 'Блюдо под заказ', 'Не актуально', 'без состава', 1, 'кг', 'mjaso.jpg'),
+(14, 'Блюдо 17', 'Не актуально', 'под заказ', 1500, 'г', 'losos.jpg');
 
 -- --------------------------------------------------------
 
@@ -91,9 +94,24 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `users_id`, `dishes_id`, `count`, `date`, `status`) VALUES
-(10, 30, 1, 5, '2020-09-02 12:40:00', 'Ожидание'),
-(11, 49, 9, 10, '2020-09-02 12:43:00', 'Ожидание'),
-(12, 50, 1, 15, '2020-09-02 12:43:00', 'Ожидание');
+(10, 30, 2, 1, '2020-09-13 09:50:34', 'Изменён(Ожидание)'),
+(11, 49, 9, 10, '2020-09-06 20:32:00', 'Ожидание'),
+(12, 50, 1, 15, '2020-09-02 12:43:00', 'Ожидание'),
+(14, 30, 7, 10, '2020-09-13 09:54:44', 'Изменён(Ожидание)'),
+(15, 30, 1, 3, '2020-09-03 22:31:00', 'Ожидание'),
+(16, 30, 1, 10, '2020-09-03 22:32:00', 'Ожидание'),
+(18, 51, 10, 2, '2020-09-06 09:14:00', 'Ожидание'),
+(20, 30, 1, 2, '2020-09-06 00:00:00', 'Отменён'),
+(21, 30, 1, 2, '2020-09-06 10:42:54', 'Отменён'),
+(23, 51, 10, 4, '2020-09-06 18:54:00', '2'),
+(24, 51, 2, 2, '2020-09-06 19:19:11', 'Отменён'),
+(27, 30, 1, 300, '2020-09-03 01:01:01', 'Ожидание'),
+(28, 49, 8, 1, '2020-09-10 18:07:36', 'Отменён'),
+(29, 49, 2, 1, '2020-09-10 18:07:52', 'Ожидание'),
+(30, 49, 14, 1, '2020-09-10 18:33:33', 'Отменён'),
+(31, 49, 7, 1, '2020-09-12 09:07:14', 'Ожидание'),
+(32, 49, 7, 1, '2020-09-12 09:09:01', 'Ожидание'),
+(33, 50, 8, 1, '2020-09-14 07:50:39', 'Ожидание');
 
 -- --------------------------------------------------------
 
@@ -118,7 +136,10 @@ INSERT INTO `users` (`id`, `login`, `password`, `FIO`, `email`, `group_id`) VALU
 (30, 'Босс', '1234', 'Юрий Юрьевич', '', 1),
 (49, 'Объект1', '1', 'Евгений А.А.', '', 3),
 (50, 'Объект2', '2', 'Артём В.В.', '', 3),
-(51, 'roma', '17', 'С.Ф.', 'o@gmail.com', 2);
+(51, 'roma', '17', 'С.Ф.', 'o@gmail.com', 2),
+(54, 'Petr', '', 'K.K', 'spawn@mail.ru', 2),
+(55, 'Объект3', '3', 'Ж.K', '', 2),
+(56, 'Егор123', '123', 'И.П', 'asd@mail.ru', 2);
 
 --
 -- Индексы сохранённых таблиц
@@ -161,7 +182,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `dishes`
 --
 ALTER TABLE `dishes`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=11;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT для таблицы `group`
@@ -173,13 +194,13 @@ ALTER TABLE `group`
 -- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=14;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=52;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=58;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
