@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/image.css">
     <link rel="stylesheet" href="css/card.css">
     <link rel="stylesheet" href="css/slider.css">
+    <link rel="stylesheet" href="css/popup.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
@@ -39,6 +40,7 @@ switch ($_SESSION['user']['cod']) {
 $this->body();
 ?>
 <script src="js/test.js"></script>
+<script src="js/popup.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"

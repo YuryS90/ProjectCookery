@@ -7,19 +7,52 @@
 }
 
 .pagination {
-    display: flex;
-    justify-content: space-between;
-    width: 3%;
+    display: inline-block;
+    /*display: flex;*/
+    /*justify-content: space-between;*/
+    /*width: 3%;*/
 }
 
 .contPag .pagination a {
-    display: block;
+    /*display: block;*/
+    /*color: black;*/
     color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+
+    border-radius: 5px;
+
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+
+    margin: 0 4px;
+    font-size: 15px
+
 }
+.pagination a.current {
+    background-color: #4CAF50;
+    color: white;
+
+    border-radius: 5px;
+}
+
+.pagination a:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.pagination a:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.pagination a:hover:not(.current) {background-color: #80cf58;}
 
 .contPag {
     display: flex;
     justify-content: center;
+    padding-top: 30px;
 }
 
 .hidden {
@@ -131,13 +164,26 @@
 }
 
 .price  {
-    color: red;
+    color: #985933;
+    font-family: "Roboto Light";
+    font-size: 30px;
 }
 
-.price span {
-    text-transform: uppercase;
-    color: blue;
+.price__text {
+    font-family: cursive;
+    font-size: 20px;
+    font-style: normal;
 }
+
+.carusel {
+
+}
+.carusel__inner {
+
+}
+
+
+
 
 
 

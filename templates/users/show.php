@@ -3,6 +3,7 @@
 use TexLab\Html\Select;
 use View\Html\Html;
 
+
 /**
  * Пользователи
  *
@@ -86,6 +87,21 @@ $form->addContent(
 
 echo $form->html();
 ?>
+<!--Модальное окно или popup-->
+<div id="popup" class="popup">
+
+    <div class="popup__body">
+        <div class="popup__content">
+            <a href="#header" class="popup__close">X</a>
+            <div class="popup__title">Modal window</div>
+            <div class="popup__text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque harum quisquam saepe. Delectus
+                dolores ducimus ex nam nobis qui tenetur? At distinctio eos ex id, ipsum nisi recusandae sunt
+                voluptatum.
+            </div>
+        </div>
+    </div>
+</div>
 
 <div id="shadow" class="hidden"></div>
 

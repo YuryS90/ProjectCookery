@@ -1,8 +1,7 @@
 <?php
 
-use TexLab\Html\Select;
 use View\Html\Html;
-use TexLab\Html\Html as Htmlt;
+
 
 /**
  * Мои заказы с кнопкой "отменить заказ"
@@ -13,9 +12,11 @@ use TexLab\Html\Html as Htmlt;
  * @var string $type Имя контроллера
  * @var array $usersList Список пользователей
  * @var array $dishesList Список блюд
+ * @var array $totalPrice
  * @var array $groupNames Имя групп
  * @var array $table
  * @var int $user_id
+ * @var int $currentPage текущая страница
  */
 
 echo Html::create('TableCancel')
@@ -25,16 +26,36 @@ echo Html::create('TableCancel')
     ->setClass('table')
     ->html();
 
-echo "<div class='price'><span>Вы сделали заказ на:</span> ";
-echo $totalPrice . "руб.";
+echo "<div class='alert alert-primary price__text' role='alert'>Вы сделали заказ на:</span> ";
+echo "<span class='price'>" . $totalPrice . "руб.</span>";
 echo "</div>";
 
+
 echo "<div class='contPag'>";
-echo Html::create("Pagination")
-    ->setClass('pagination')
-    ->setControllerType($type)
+?>
+
+    <div class="pagination">
+        <a href="#">Предыдущая</a>
+    </div>
+
+<?php
+echo TexLab\Html\Html::pagination()
     ->setPageCount($pageCount)
+    ->setCurrentPage($currentPage)
+    ->setClass('pagination')
+
+    ->setUrlPrefix("?action=show&type=$type")
     ->html();
+//echo Html::create("Pagination")
+//    ->setClass('pagination')
+//    ->setControllerType($type)
+//    ->setPageCount($pageCount)
+//    ->html();
+?>
+    <div class="pagination">
+        <a href="#">Следующая</a>
+    </div>
+<?php
 echo "</div>";
 
 

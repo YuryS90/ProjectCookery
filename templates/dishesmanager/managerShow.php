@@ -21,6 +21,7 @@ echo Html::create('TableToOrder')
     ->setClass('table')
     ->html();
 
+// Чтобы число первой страницы появлялось вместе со второй
 if ($pageCount > 1) {
     echo "<div class='contPag'>";
     echo Html::create("Pagination")

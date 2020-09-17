@@ -77,6 +77,6 @@ class OrdersModel extends DbEntity
      * */
     public function getTotalPrice(int $user_id)
     {
-        return (int) $this->runSQL("SELECT SUM(dishes.price * orders.count) AS 'sum' FROM dishes, orders, users WHERE dishes.id = orders.dishes_id AND orders.users_id = users.id AND users.id = $user_id AND orders.status <> 'Отменён'")[0]['sum'];
+        return (float) $this->runSQL("SELECT SUM(dishes.price * orders.count) AS 'sum' FROM dishes, orders, users WHERE dishes.id = orders.dishes_id AND orders.users_id = users.id AND users.id = $user_id AND orders.status <> 'Отменён' ")[0]['sum'];
     }
 }
