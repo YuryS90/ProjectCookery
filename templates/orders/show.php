@@ -15,6 +15,16 @@ use View\Html\Html;
  * @var array $groupNames Имя групп
  * @var array $table
  */
+foreach ($table as &$value) {
+    
+    if ($value['status'] == 'Ожидание') {
+        $value['status'] = "<font color='blue'>" . $value['status'] . "</font>";
+    } elseif ($value['status'] == 'Изменён(Ожидание)') {
+        $value['status'] = "<font color='green'>" . $value['status'] . "</font>";
+    } elseif ($value['status'] == 'Отменён') {
+        $value['status'] = "<font color='red'>" . $value['status'] . "</font>";
+    }
+}
 
 echo Html::create('TableEdited')
     ->setControllerType($type)

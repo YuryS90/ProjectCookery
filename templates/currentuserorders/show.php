@@ -18,6 +18,19 @@ use View\Html\Html;
  * @var int $user_id
  * @var int $currentPage текущая страница
  */
+foreach ($table as &$value) {
+    
+    if ($value['status'] == 'Ожидание') {
+        $value['status'] = "<font color='blue'>" . $value['status'] . "</font>";
+    } elseif ($value['status'] == 'Изменён(Ожидание)') {
+        $value['status'] = "<font color='green'>" . $value['status'] . "</font>";
+    } elseif ($value['status'] == 'Отменён') {
+        $value['status'] = "<font color='red'>" . $value['status'] . "</font>";
+    }
+
+    unset($value['users_id']);
+}
+unset($comments['users_id']);
 
 echo Html::create('TableCancel')
     ->setControllerType($type)

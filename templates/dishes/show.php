@@ -14,6 +14,12 @@ use View\Html\Html;
 foreach ($table as &$value) {
     $ext = pathinfo($value['imgdishes'], PATHINFO_EXTENSION);
     $value['imgdishes'] = "<img src='images/dishes/$value[id].$ext' class='img'>";
+
+    if ($value['statusdish'] == 'Актуально') {
+        $value['statusdish'] = "<font color='green'>" . $value['statusdish'] . "</font>";
+    } elseif ($value['statusdish'] == 'Не актуально') {
+        $value['statusdish'] = "<font color='red'>" . $value['statusdish'] . "</font>";
+    } 
 }
 
 echo Html::create('TableEdited')
