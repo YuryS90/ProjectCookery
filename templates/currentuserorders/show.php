@@ -34,16 +34,15 @@ echo "</div>";
 echo "<div class='contPag'>";
 ?>
 
-    <div class="pagination">
-        <a href="#">Предыдущая</a>
-    </div>
+<!--    <div class="pagination">-->
+<!--        <a href="#">Предыдущая</a>-->
+<!--    </div>-->
 
 <?php
 echo TexLab\Html\Html::pagination()
     ->setPageCount($pageCount)
     ->setCurrentPage($currentPage)
     ->setClass('pagination')
-
     ->setUrlPrefix("?action=show&type=$type")
     ->html();
 //echo Html::create("Pagination")
@@ -52,9 +51,9 @@ echo TexLab\Html\Html::pagination()
 //    ->setPageCount($pageCount)
 //    ->html();
 ?>
-    <div class="pagination">
-        <a href="#">Следующая</a>
-    </div>
+<!--    <div class="pagination">-->
+<!--        <a href="#">Следующая</a>-->
+<!--    </div>-->
 <?php
 echo "</div>";
 

@@ -92,7 +92,7 @@ echo $form->html();
 
     <div class="popup__body">
         <div class="popup__content">
-            <a href="#header" class="popup__close">X</a>
+            <a href="#header" class="popup__close close-popup">X</a>
             <div class="popup__title">Modal window</div>
             <div class="popup__text">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque harum quisquam saepe. Delectus

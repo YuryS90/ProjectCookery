@@ -23,48 +23,7 @@ echo Html::create('TableEdited')
     ->setClass('table')
     ->html();
 // print_r($table);
-?>
-<!--<section class="products">-->
-<!--    <div class="container">-->
-<?php
-//        foreach ($table as &$value) {
-//            $ext = pathinfo($value['imgdishes'], PATHINFO_EXTENSION);
-//            $value['imgdishes'] = "<img src='images/dishes/$value[id].$ext' class='card-img-top' style='height:200px'>";
-//        }
-//
-//        echo '<div class="row">';
-//        foreach ($table as $row) {
-//            echo '<div class="col-md-3 col-sm-6">';
-//            echo '<div class="card">';
-//            echo $row['imgdishes'];
-//            echo '<div class="card-body">';
-//            echo '<h5 class="card-title">Состав:</h5>';
-//            echo '<p class="card-text"  style="height:100px">' . $row['composition'] . '</p>';
-//            echo '</div>';
-//            echo '<ul class="list-group list-group-flush">';
-//            echo '<li class="list-group-item"><b>' . $row['namedishes'] . '</b></li>';
-//            echo '</ul>';
-//            echo '<div class="card-body">';
-//            echo "<button type='button' class='btn btn-danger dropdown-toggle'" .
-//                "data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Опции</button>\n" .
-//                "<div class='dropdown-menu'>" .
-//                "<a class='dropdown-item' href='?action=del&type=$type&id=$row[id]'>Удалить</a>" .
-//                "<a class='dropdown-item' href='?action=showedit&type=$type&id=$row[id]'>Редактировать</a>" .
-//                "</div>";
-//            echo '</div>';
-//            echo '</div>';
-//            echo "</div>\n\n";
 
-//            echo "</div>\n\n\n\n\n\n";
-//            echo '<div class="row">';
-//
-//        }
-//        echo '</div>';
-?>
-
-<!--    </div>-->
-<!--</section>-->
-<?php
 
 echo "<div class='contPag'>";
 echo Html::create("Pagination")

@@ -73,9 +73,9 @@
                     <a class="nav-link" href="/">Главная<span class="sr-only">(current)</span></a>
                 </li>
 
-                <!--            <li class="nav-item--><? //= $controllerType == 'dishes' ? ' active' : '' ?><!--">-->
-                <!--                <a class="nav-link" href="?action=show&type=dishes">Блюда</a>-->
-                <!--            </li>-->
+                <li class="nav-item<?= $controllerType == 'dishesuser' ? ' active' : '' ?>">
+                    <a class="nav-link" href="?action=show&type=dishesuser">Блюда</a>
+                </li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Сен 15 2020 г., 21:34
+-- Время создания: Сен 18 2020 г., 17:58
 -- Версия сервера: 8.0.19
--- Версия PHP: 7.3.17
+-- Версия PHP: 7.4.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -48,7 +48,7 @@ INSERT INTO `dishes` (`id`, `namedishes`, `statusdish`, `composition`, `volume`,
 (1, 'Блюдо1', 'Актуально', 'Сomponent1, component2, component3, component4, component5', 40, 'г', 'intro3.jpg', 2),
 (2, 'Блюдо2', 'Актуально', 'Component1, component2, component3, component4', 10, 'шт', 'bliny.jpg', 3),
 (7, 'Блюдо 7', 'Актуально', 'без состава', 7, 'кг', 'losos.jpg', 4),
-(8, 'Блюдо 8', 'Актуально', 'Component1', 1, 'кг', '', 3),
+(8, 'Блюдо 8', 'Актуально', 'Component1', 1, 'кг', 'intro3.jpg', 3.5),
 (9, 'Блюдо 9', 'Не актуально', 'без состава', 3, 'кг', '', 3),
 (10, 'Блюдо 10', 'Не актуально', 'Сomponent1, component2, component3, component4, component5', 1, 'шт', 'salat.jpg', 2.5),
 (11, 'Блюдо под заказ', 'Не актуально', 'без состава', 1, 'кг', 'mjaso.jpg', 30.4),
@@ -110,10 +110,13 @@ INSERT INTO `orders` (`id`, `users_id`, `dishes_id`, `count`, `date`, `status`) 
 (28, 49, 8, 1, '2020-09-10 18:07:36', 'Отменён'),
 (29, 49, 2, 1, '2020-09-10 18:07:52', 'Ожидание'),
 (30, 49, 14, 1, '2020-09-10 18:33:33', 'Отменён'),
-(31, 49, 7, 1, '2020-09-12 09:07:14', 'Ожидание'),
+(31, 49, 7, 1, '2020-09-12 09:07:14', 'Отменён'),
 (32, 49, 7, 1, '2020-09-12 09:09:01', 'Ожидание'),
 (33, 50, 8, 2, '2020-09-15 21:02:22', 'Отменён'),
-(34, 50, 7, 1, '2020-09-15 21:03:51', 'Отменён');
+(34, 50, 7, 1, '2020-09-15 21:03:51', 'Отменён'),
+(35, 58, 1, 3, '2020-09-17 12:59:56', 'Изменён(Ожидание)'),
+(36, 58, 2, 1, '2020-09-17 12:59:21', 'Готово'),
+(37, 30, 2, 1, '2020-09-18 14:22:26', 'Ожидание');
 
 -- --------------------------------------------------------
 
@@ -141,7 +144,8 @@ INSERT INTO `users` (`id`, `login`, `password`, `FIO`, `email`, `group_id`) VALU
 (51, 'roma', '17', 'С.Ф.', 'o@gmail.com', 2),
 (54, 'Petr', '', 'K.K', 'spawn@mail.ru', 2),
 (55, 'Объект3', '3', 'Ж.K', '', 2),
-(56, 'Егор123', '123', 'И.П', 'asd@mail.ru', 2);
+(56, 'Егор123', '123', 'И.П', 'asd@mail.ru', 2),
+(58, 'Объект4', '4', 'П.П', '', 3);
 
 --
 -- Индексы сохранённых таблиц
@@ -196,13 +200,13 @@ ALTER TABLE `group`
 -- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=35;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=58;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=59;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц

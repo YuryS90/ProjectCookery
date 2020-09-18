@@ -38,76 +38,76 @@ p {
     margin: 0px 0px 20px 0px;
 }
 
-.wrapper {
-    overflow: hidden;
-    min-height: 100%;
-}
+/*.wrapper {*/
+/*    overflow: hidden;*/
+/*    min-height: 100%;*/
+/*}*/
 
-._container {
-    max-width: 1070px;
-    margin: 0 auto;
-    padding: 0 15px;
-}
+/*._container {*/
+/*    max-width: 1070px;*/
+/*    margin: 0 auto;*/
+/*    padding: 0 15px;*/
+/*}*/
 
-.header {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background-color: #000;
-    margin: 0 0 50px 0;
-}
-.header__container {
-    display: flex;
-    height: 80px;
-    align-items: center;
-    justify-content: space-between;
-}
+/*.header {*/
+/*    position: fixed;*/
+/*    width: 100%;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    background-color: #000;*/
+/*    margin: 0 0 50px 0;*/
+/*}*/
+/*.header__container {*/
+/*    display: flex;*/
+/*    height: 80px;*/
+/*    align-items: center;*/
+/*    justify-content: space-between;*/
+/*}*/
 
-.header__logo {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #fff;
-}
-.header__phone {
-    color: #fff;
-}
+/*.header__logo {*/
+/*    width: 50px;*/
+/*    height: 50px;*/
+/*    border-radius: 50%;*/
+/*    background-color: #fff;*/
+/*}*/
+/*.header__phone {*/
+/*    color: #fff;*/
+/*}*/
 
-.content {
-    padding: 130px 0 0 0;
-}
+/*.content {*/
+/*    padding: 130px 0 0 0;*/
+/*}*/
 
-.content__container {
+/*.content__container {*/
 
-}
-.content__section {
-    margin: 0 0 50px 0;
-}
+/*}*/
+/*.content__section {*/
+/*    margin: 0 0 50px 0;*/
+/*}*/
 
-.content__section_row {
-    margin: 0 -20px 50px;
-}
-@media (min-width: 992px) {
-    .content__section_row {
-        display: flex;
-    }
-}
+/*.content__section_row {*/
+/*    margin: 0 -20px 50px;*/
+/*}*/
+/*@media (min-width: 992px) {*/
+/*    .content__section_row {*/
+/*        display: flex;*/
+/*    }*/
+/*}*/
 
-.content__image {
-    display: block;
-    padding: 0 20px;
-    flex: 0 1 50%;
-}
+/*.content__image {*/
+/*    display: block;*/
+/*    padding: 0 20px;*/
+/*    flex: 0 1 50%;*/
+/*}*/
 
-.content__image img {
-    max-width: 100%;
-}
+/*.content__image img {*/
+/*    max-width: 100%;*/
+/*}*/
 
-.content__subtitle {
-    font-size: 30px;
-    margin: 0 0 0.5em 0;
-}
+/*.content__subtitle {*/
+/*    font-size: 30px;*/
+/*    margin: 0 0 0.5em 0;*/
+/*}*/
 
 /*==================Вёрстка popup======================*/
 .popup {
