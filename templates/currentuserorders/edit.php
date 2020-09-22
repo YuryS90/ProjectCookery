@@ -29,8 +29,7 @@ foreach ($fields as $name => $value) {
                     ->setValue($id)
                     ->html());
 
-    }
-    elseif ($name == 'date') {
+    } elseif ($name == 'date') {
         $form
             ->addContent(
                 Htmlt::input()

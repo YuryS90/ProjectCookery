@@ -27,5 +27,11 @@
         }
 
         ?>
+
+        <div class="linkBox">
+            <a href="/">На главную ↩</a>
+            <a href="?action=show&type=reg">Регистарция</a>
+        </div>
+
     </form>
 </div>

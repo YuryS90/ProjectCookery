@@ -1,6 +1,8 @@
 <?php
 
+
 use TexLab\Html\Select;
+
 use View\Html\Html;
 
 
@@ -9,27 +11,77 @@ use View\Html\Html;
  * @var array $comments Комментарии к полям таблицы
  * @var string $type Имя контроллера
  * @var array $table
+ * @var int $currentPage
  */
-
+?>
+<h3>Работа с блюдами</h3>
+<?php
 foreach ($table as &$value) {
     $ext = pathinfo($value['imgdishes'], PATHINFO_EXTENSION);
     $value['imgdishes'] = "<img src='images/dishes/$value[id].$ext' class='img'>";
 
     if ($value['statusdish'] == 'Актуально') {
-        $value['statusdish'] = "<font color='green'>" . $value['statusdish'] . "</font>";
+        $value['statusdish'] = "<div class='stat stat_5'>" . $value['statusdish'] . "</div>";
     } elseif ($value['statusdish'] == 'Не актуально') {
-        $value['statusdish'] = "<font color='red'>" . $value['statusdish'] . "</font>";
-    } 
+        $value['statusdish'] = "<div class='stat stat_6'>" . $value['statusdish'] . "</div>";
+    }
+
+    if ($value['namedishes']) {
+        $value['namedishes'] = "<div class='stat'>" . $value['namedishes'] . "</div>";
+    }
+
+    if ($value['volume']) {
+        $value['volume'] = "<div class='stat volume'>" . $value['volume'] . "</div>";
+    }
+
+    if ($value['unit']) {
+        $value['unit'] = "<div class='stat volume'>" . $value['unit'] . "</div>";
+    }
+
+    if ($value['price']) {
+        $value['price'] = "<div class='stat price'>" . $value['price'] . "</div>";
+    }
+}
+// Вывод ошибок
+if (!empty($_SESSION['errors'])) {
+    foreach ($_SESSION['errors'] as $error) {
+        echo "<div class='alert alert-danger' role='alert'>$error</div>";
+    }
+    unset($_SESSION['errors']);
 }
 
-echo Html::create('TableEdited')
-    ->setControllerType($type)
+echo TexLab\Html\Html::table()
+    ->setData($table)
     ->setHeaders($comments)
-    ->data($table)
-    ->setClass('table')
+    ->setClass('table table-striped table-warning')
+    ->loopByRow(function (&$row) use ($type) {
+        $row['edit'] = "<button type='button' class='btn btn-danger dropdown-toggle'" .
+            "data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Опции</button>\n" .
+            "<div class='dropdown-menu'>" .
+            "<a class='dropdown-item' href='?action=del&type=$type&id=$row[id]'>Удалить</a>" .
+            "<a class='dropdown-item' href='?action=showedit&type=$type&id=$row[id]'>Редактировать</a>" .
+            "</div></td>\n";
+    })
     ->html();
-// print_r($table);
 
+//if ($pageCount > 1) {
+//    echo "<div class='contPag'>";
+//    echo TexLab\Html\Html::pagination()
+//        ->setPageCount($pageCount)
+//        ->setCurrentPage($currentPage)
+//        ->setClass('pagination')
+//        ->setUrlPrefix("?action=show&type=$type")
+//        ->setPrevious('&laquo;')
+//        ->setNext('&raquo;')
+//        ->html();
+//    echo "</div>";
+//}
+
+?>
+
+<a class="btn btn-light" id="addButton">Добавить блюдо</a>
+
+<?php
 
 echo "<div class='contPag'>";
 echo Html::create("Pagination")
@@ -38,12 +90,6 @@ echo Html::create("Pagination")
     ->setPageCount($pageCount)
     ->html();
 echo "</div>";
-?>
-
-<a class="btn btn-light" id="addButton">Добавить блюдо</a>
-
-<?php
-
 
 $form = Html::create('Form')
     ->setMethod('POST')

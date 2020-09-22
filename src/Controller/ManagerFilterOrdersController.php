@@ -31,7 +31,7 @@ class ManagerFilterOrdersController extends AbstractTableController
 
         $this
             ->view
-            ->setFolder('managerorders');
+            ->setFolder('managerusersorders');
     }
 
 

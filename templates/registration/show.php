@@ -38,6 +38,9 @@
         <input type="submit" value="Отправить" class="form_button">
 
         <div id="response"></div>
+        <div class="linkBox">
+            <a href="?action=loginform&type=auth">Назад ↩</a>
+        </div>
     </form>
 </div>
 

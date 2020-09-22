@@ -3,36 +3,52 @@
 use TexLab\Html\Select;
 use View\Html\Html;
 
-
 /**
  * Пользователи
  *
- * @var int $pageCount Количество страниц
- * @var array $fields Список полей таблицы
- * @var array $comments Комментарии к полям таблицы
+ * @var array $table Данные таблицы
  * @var string $type Имя контроллера
- * @var array $groupNames Имя групп
- * @var array $table
+ * @var array $comments Комментарии к полям таблицы
+ * @var int $pageCount Количество страниц
+ * @var int $currentPage текущая страница
+ * @var array $fields Список полей таблицы
+ * @var array $groupNames Список имён групп
  */
-
-echo Html::create('TableEdited')
-    ->setControllerType($type)
-    ->setHeaders($comments)
-    ->data($table)
-    ->setClass('table')
-    ->html();
-
-echo "<div class='contPag'>";
-echo Html::create("Pagination")
-    ->setClass('pagination')
-    ->setControllerType($type)
-    ->setPageCount($pageCount)
-    ->html();
-echo "</div>";
-
 ?>
-<a class="btn btn-outline-success" id="addButton">Добавить пользователя</a>
+<h3>Управление пользователями</h3>
 <?php
+
+echo TexLab\Html\Html::table()
+    ->setData($table)
+    ->setHeaders($comments)
+    ->setClass('table table-striped table-success')
+    ->removeColumns(['users_id'])
+    ->loopByRow(function (&$row) use ($type) {
+        $row['edit'] = "<button type='button' class='btn btn-danger dropdown-toggle'" .
+            "data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Опции</button>\n" .
+            "<div class='dropdown-menu'>" .
+            "<a class='dropdown-item' href='?action=del&type=$type&id=$row[id]'>Удалить</a>" .
+            "<a class='dropdown-item' href='?action=showedit&type=$type&id=$row[id]'>Редактировать</a>" .
+            "</div></td>\n";
+    })
+    ->html();
+?>
+
+<a class="btn btn-outline-success" id="addButton">Добавить пользователя</a>
+
+<?php
+if ($pageCount > 1) {
+    echo "<div class='contPag'>";
+    echo TexLab\Html\Html::pagination()
+        ->setPageCount($pageCount)
+        ->setCurrentPage($currentPage)
+        ->setClass('pagination')
+        ->setUrlPrefix("?action=show&type=$type")
+        ->setPrevious('&laquo;')
+        ->setNext('&raquo;')
+        ->html();
+    echo "</div>";
+}
 
 $form = Html::create('Form')
     ->setMethod('POST')

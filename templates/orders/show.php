@@ -4,7 +4,6 @@ use TexLab\Html\Html as Htmlt;
 use TexLab\Html\Select;
 use View\Html\Html;
 
-
 /**
  * @var int $pageCount Количество страниц
  * @var array $fields Список полей таблицы
@@ -15,23 +14,65 @@ use View\Html\Html;
  * @var array $groupNames Имя групп
  * @var array $table
  */
+
+?>
+<h3>Работа с заказами</h3>
+<?php
 foreach ($table as &$value) {
-    
-    if ($value['status'] == 'Ожидание') {
-        $value['status'] = "<font color='blue'>" . $value['status'] . "</font>";
-    } elseif ($value['status'] == 'Изменён(Ожидание)') {
-        $value['status'] = "<font color='green'>" . $value['status'] . "</font>";
+
+    if ($value['status'] == 'Ожидание' || $value['status'] == 'Изменён(Ожидание)') {
+        $value['status'] = "<div class='stat stat_1'>" . $value['status'] . "</div>";
     } elseif ($value['status'] == 'Отменён') {
-        $value['status'] = "<font color='red'>" . $value['status'] . "</font>";
+        $value['status'] = "<div class='stat stat_2'>" . $value['status'] . "</div>";
+    } elseif ($value['status'] == 'Оплачено') {
+        $value['status'] = "<div class='stat stat_3'>" . $value['status'] . "</div>";
+    } elseif ($value['status'] == 'Готово') {
+        $value['status'] = "<div class='stat stat_4'>" . $value['status'] . "</div>";
+    }
+
+    if ($value['date']) {
+        $value['date'] = "<div class='stat'>" . $value['date'] . "</div>";
+    }
+
+    if ($value['count']) {
+        $value['count'] = "<div class='stat'>" . $value['count'] . "</div>";
+    }
+
+    if ($value['dishes_id']) {
+        $value['dishes_id'] = "<div class='stat'>" . $value['dishes_id'] . "</div>";
+    }
+
+    if ($value['users_id']) {
+        $value['users_id'] = "<div class='stat'>" . $value['users_id'] . "</div>";
     }
 }
 
-echo Html::create('TableEdited')
-    ->setControllerType($type)
+echo TexLab\Html\Html::table()
+    ->setData($table)
     ->setHeaders($comments)
-    ->data($table)
-    ->setClass('table')
+    ->setClass('table table-striped table-warning')
+    ->loopByRow(function (&$row) use ($type) {
+        $row['edit'] = "<button type='button' class='btn btn-danger dropdown-toggle'" .
+            "data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Опции</button>\n" .
+            "<div class='dropdown-menu'>" .
+            "<a class='dropdown-item' href='?action=del&type=$type&id=$row[id]'>Удалить</a>" .
+            "<a class='dropdown-item' href='?action=showedit&type=$type&id=$row[id]'>Редактировать</a>" .
+            "</div></td>\n";
+    })
     ->html();
+
+//if ($pageCount > 1) {
+//    echo "<div class='contPag'>";
+//    echo TexLab\Html\Html::pagination()
+//        ->setPageCount($pageCount)
+//        ->setCurrentPage($currentPage)
+//        ->setClass('pagination')
+//        ->setUrlPrefix("?action=show&type=$type")
+//        ->setPrevious('&laquo;')
+//        ->setNext('&raquo;')
+//        ->html();
+//    echo "</div>";
+//}
 
 echo "<div class='contPag'>";
 echo Html::create("Pagination")
