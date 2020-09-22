@@ -79,4 +79,11 @@ class OrdersModel extends DbEntity
     {
         return (float)$this->runSQL("SELECT SUM(dishes.price * orders.count) AS 'sum' FROM dishes, orders, users WHERE dishes.id = orders.dishes_id AND orders.users_id = users.id AND users.id = $user_id AND orders.status <> 'Отменён'  AND orders.status <> 'Оплачено'")[0]['sum'];
     }
+
+
+//     public function pageCountApplication(int $user_id)
+//     {
+// //        print_r($this->runSQL("SELECT COUNT(*) as count FROM application, users WHERE `users`.`id` = `application`.`users_id` AND `application` . `users_id` = $user_id"));
+//         return ceil($this->runSQL("SELECT COUNT(*) as count FROM application, users WHERE `users`.`id` = `application`.`users_id` AND `application` . `users_id` = $user_id")[0]['count'] / $this->pageSize);
+//     }
 }
