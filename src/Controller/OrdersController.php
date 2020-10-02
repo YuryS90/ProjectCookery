@@ -83,8 +83,10 @@ class OrdersController extends AbstractTableController
                 'fields' => array_diff($this->table->getColumnsNames(), ['id']),
                 'comments' => $this->table->getColumnsComments(),
                 'type' => $this->getClassName(),
-                'pageCount' => $this->table->pageCount()
+                'pageCount' => $this->table->pageCount(),
+                'currentPage' => $data['get']['page'] ?? 1
             ]);
+        $this->table->getAutomaticDelOrders();
         // в show будем ловить usersList + ordersList
         //        print_r($this->usersTable->getUsers());
 //                print_r($this->ordersTable->getDishes());
@@ -115,8 +117,6 @@ class OrdersController extends AbstractTableController
         $this->table->getEditStatus($id);
         $this->redirect('?action=show&type=' . $this->getClassName());
     }
-
-
 
 
 }

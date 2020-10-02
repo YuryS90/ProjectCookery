@@ -8,6 +8,7 @@ use View\Html\Html;
  * Просмотр заказов всех менеджеров
  *
  * @var int $pageCount Количество страниц
+ * @var int $currentPage Текущая страница
  * @var array $fields Список полей таблицы
  * @var array $comments Комментарии к полям таблицы
  * @var string $type Имя контроллера
@@ -51,25 +52,25 @@ echo TexLab\Html\Html::table()
     ->setClass('table table-striped table-warning')
     ->html();
 
-//if ($pageCount > 1) {
-//    echo "<div class='contPag'>";
-//    echo TexLab\Html\Html::pagination()
-//        ->setPageCount($pageCount)
-//        ->setCurrentPage($currentPage)
-//        ->setClass('pagination')
-//        ->setUrlPrefix("?action=show&type=$type")
-//        ->setPrevious('&laquo;')
-//        ->setNext('&raquo;')
-//        ->html();
-//    echo "</div>";
-//}
-echo "<div class='contPag'>";
-echo Html::create("Pagination")
-    ->setClass('pagination')
-    ->setControllerType($type)
-    ->setPageCount($pageCount)
-    ->html();
-echo "</div>";
+if ($pageCount > 1) {
+    echo "<div class='contPag'>";
+    echo TexLab\Html\Html::pagination()
+        ->setPageCount($pageCount)
+        ->setCurrentPage($currentPage)
+        ->setClass('pagination')
+        ->setUrlPrefix("?action=show&type=$type")
+        ->setPrevious('&laquo;')
+        ->setNext('&raquo;')
+        ->html();
+    echo "</div>";
+}
+//echo "<div class='contPag'>";
+//echo Html::create("Pagination")
+//    ->setClass('pagination')
+//    ->setControllerType($type)
+//    ->setPageCount($pageCount)
+//    ->html();
+//echo "</div>";
 
 
 

@@ -49,7 +49,8 @@ class DishesManagerController extends DishesController
                 'fields' => array_diff($this->table->getColumnsNames(), ['id']),
                 'comments' => $this->table->getColumnsComments(),
                 'type' => $this->getClassName(),
-                'pageCount' => $this->table->pageCountDishesStatus()
+                'pageCount' => $this->table->pageCountDishesStatus(),
+                'currentPage' => $data['get']['page'] ?? 1
             ]);
     }
 

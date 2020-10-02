@@ -14,8 +14,8 @@
                 <a class="nav-link" href="/">Главная<span class="sr-only">(current)</span></a>
             </li>
 
-            <li class="nav-item<?= $controllerType == 'dishesmanager' ? ' active' : '' ?>">
-                <a class="nav-link" href="?action=show&type=dishesmanager">Блюда</a>
+            <li class="nav-item<?= $controllerType == 'dishesuser' ? ' active' : '' ?>">
+                <a class="nav-link" href="?action=show&type=dishesuser">Блюда</a>
             </li>
 
         </ul>

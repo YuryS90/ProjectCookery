@@ -2,6 +2,16 @@
     border: 2px solid black;
 }
 
+
+
+table-warning, .table-warning>td, .table-warning>th {
+    background-color: #495057;
+}
+
+.table-warning tbody+tbody, .table-warning td, .table-warning th, .table-warning thead th {
+    border-color: #bd2130;
+}
+
 .table {
     border-collapse: collapse;
 }
@@ -52,7 +62,7 @@
 .contPag {
     display: flex;
     justify-content: center;
-    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 .hidden {
@@ -175,12 +185,6 @@
     font-style: normal;
 }
 
-.carusel {
-
-}
-.carusel__inner {
-
-}
 
 
 

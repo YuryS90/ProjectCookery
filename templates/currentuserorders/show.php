@@ -46,7 +46,7 @@ echo TexLab\Html\Html::table()
     ->removeColumns(['users_id'])
     ->loopByRow(function (&$row) use ($type) {
         $disabled = '';
-        if ($row['status'] == 'Отменён') {
+        if ($row['status'] == 'Отменён' || $row['status'] == 'Оплачено') {
             $disabled = ' disabled';
         }
         $row['edit'] = "<a role='button' href='?action=showedit&type=$type&id=$row[id]' class='btn btn-outline-primary$disabled'>Изменить заказ</a>" .

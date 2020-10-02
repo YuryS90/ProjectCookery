@@ -30,6 +30,12 @@ echo TexLab\Html\Html::table()
     })
     ->html();
 
+?>
+
+<a class="btn btn-outline-success" id="addButton">Добавить новую группу</a>
+
+<?php
+
 if ($pageCount > 1) {
     echo "<div class='contPag'>";
     echo TexLab\Html\Html::pagination()
@@ -43,9 +49,7 @@ if ($pageCount > 1) {
     echo "</div>";
 }
 
-?>
-<a class="btn btn-outline-success" id="addButton">Добавить новую группу</a>
-<?php
+
 $form = Html::create('Form')
     ->setMethod('POST')
     ->setAction("?action=add&type=$type")

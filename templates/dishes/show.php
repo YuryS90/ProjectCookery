@@ -60,7 +60,7 @@ echo TexLab\Html\Html::table()
             "<div class='dropdown-menu'>" .
             "<a class='dropdown-item' href='?action=del&type=$type&id=$row[id]'>Удалить</a>" .
             "<a class='dropdown-item' href='?action=showedit&type=$type&id=$row[id]'>Редактировать</a>" .
-            "</div></td>\n";
+            "</div>\n";
     })
     ->html();
 

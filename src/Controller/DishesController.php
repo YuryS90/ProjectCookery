@@ -3,15 +3,32 @@
 namespace Controller;
 
 use Core\Config;
+use Model\DishesModel;
+use TexLab\MyDB\DB;
+
 
 class DishesController extends AbstractTableController
 {
 
     protected $tableName = "dishes";
+    /**
+     * @var DishesModel
+     */
+    private $dishesTable;
 
     public function __construct($view)
     {
         parent::__construct($view);
+
+        $this->dishesTable = new DishesModel(
+            "dishes",
+            DB::Link([
+                'host' => Config::MYSQL_HOST,
+                'username' => Config::MYSQL_USER_NAME,
+                'password' => Config::MYSQL_PASSWORD,
+                'dbname' => Config::MYSQL_DATABASE
+            ])
+        );
 
         $this->view->setFolder('dishes');
     }
@@ -71,7 +88,9 @@ class DishesController extends AbstractTableController
                 "images/dishes/$id.$ext"
             );
 
-            $this->redirect('?action=show&type=' . $this->getClassName());
+
+            $pageCount = $this->table->setPageSize(Config::PAGE_SIZE_DISH)->pageCount();
+            $this->redirect("?action=show&type=dishes&page=$pageCount");
         }
 
 
@@ -93,13 +112,20 @@ class DishesController extends AbstractTableController
 
     public function actionDel(array $data)
     {
-        $id = $data['get']['id'];
-        $img = $this->table->get(['id' => $id])[0]['imgdishes'];
-        $ext = pathinfo($img, PATHINFO_EXTENSION);
-        if (file_exists("images/dishes/$id.$ext")) {
-            unlink("images/dishes/$id.$ext");
-        }
+//        print_r($this->dishesTable->getCountOrdersDish());
+//        print_r($data);
+        if ($this->dishesTable->getCountOrdersDish($data['get']['id']) == 0) {
+            $id = $data['get']['id'];
+            $img = $this->table->get(['id' => $id])[0]['imgdishes'];
+            $ext = pathinfo($img, PATHINFO_EXTENSION);
+            if (file_exists("images/dishes/$id.$ext")) {
+                unlink("images/dishes/$id.$ext");
+            }
 
+        } else {
+            $_SESSION['errors'][] = "Это блюдо уже заказо!";
+            $this->redirect("?action=show&type=dishes&page=$_SERVER[HTTP_REFERER]");
+        }
         parent::actionDel($data);
     }
 }

@@ -2,6 +2,7 @@
 
 
 /** @var int $pageCount Количество страниц
+ * @var int $currentPage Текущая страница
  * @var array $fields Список полей таблицы
  * @var array $comments Комментарии к полям таблицы
  * @var string $type Имя контроллера
@@ -55,12 +56,24 @@
 </section>
 <?php
 // Чтобы число первой страницы появлялось вместе со второй
+//if ($pageCount > 1) {
+//    echo "<div class='contPag'>";
+//    echo Html::create("Pagination")
+//        ->setClass('pagination')
+//        ->setControllerType($type)
+//        ->setPageCount($pageCount)
+//        ->html();
+//    echo "</div>";
+//}
 if ($pageCount > 1) {
     echo "<div class='contPag'>";
-    echo Html::create("Pagination")
-        ->setClass('pagination')
-        ->setControllerType($type)
+    echo TexLab\Html\Html::pagination()
         ->setPageCount($pageCount)
+        ->setCurrentPage($currentPage)
+        ->setClass('pagination')
+        ->setUrlPrefix("?action=show&type=$type")
+        ->setPrevious('&laquo;')
+        ->setNext('&raquo;')
         ->html();
     echo "</div>";
 }
