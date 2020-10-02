@@ -124,7 +124,7 @@ class DishesController extends AbstractTableController
 
         } else {
             $_SESSION['errors'][] = "Это блюдо уже заказо!";
-            $this->redirect("?action=show&type=dishes&page=$_SERVER[HTTP_REFERER]");
+            $this->redirect("$_SERVER[HTTP_REFERER]");
         }
         parent::actionDel($data);
     }
