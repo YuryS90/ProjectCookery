@@ -1,0 +1,109 @@
+.slider {
+    --color-1: #73ee73;
+    --color-2: red;
+    /*margin: 10px;*/
+    position: relative;
+    overflow: hidden; /*Всё что выходит за пределы слайда */
+}
+
+/*Стили для стрелочек*/
+.slider_arrow {
+    position: absolute;
+    top: 50%; /*Выравнивание по вертикали*/
+    margin: -10px;
+    z-index: 1; /*По отношению к слайдеру*/
+    outline: none; /*Внешняя линия*/
+}
+
+/*Сама стрелочка*/
+.slider_arrow::before {
+    content: '';
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: solid var(--color-1);
+    border-width: 2px 2px 0 0;
+}
+
+.slider_arrow:hover::before,
+.slider_arrow:focus::before {
+    border-color: var(--color-2);
+}
+
+/*Расположение: левая стрелочка слево от слайдера, а правая - справа */
+.slider_arrow_left {
+    left: 50px;
+    transform: rotate(-135deg);
+}
+
+.slider_arrow_right {
+    right: 50px;
+    transform: rotate(45deg);
+}
+
+/*Набрасываем стили для слайдов*/
+.slider_slide {
+    display: none; /*по умолчанию слайды скрыты*/
+    max-width: 100%;
+}
+
+.slider_slide_active {
+    display: block; /*активный слайд будет видимым*/
+}
+
+/*Набрасываем стили для точек*/
+.slider_dots {
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.slider_dot {
+    display: inline-block;
+    margin: 0 10px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-1);
+    border-radius: 50%;
+    outline: none;
+}
+
+.slider_dot:hover,
+.slider_dot:focus {
+    border-color: var(--color-2);
+}
+
+.slider_dot_active {
+    background-color: var(--color-1);
+}
+
+.slider_dot_active:hover,
+.slider_dot_active:focus {
+    border-color: transparent;
+    background-color: var(--color-2);
+}
+
+.box {
+    /*max-width: 1300px;*/
+    /*max-height: 800px;*/
+
+    /*width: 100vw;*/
+    /*height: 100vh;*/
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    /*margin-top: 40px;*/
+}
+.box img {
+
+}
+
+/*.slider_temp {*/
+/*    width: 200%;*/
+/*    position: absolute;*/
+/*    top: 0px;*/
+/*    left: 0px;*/
+/*}*/

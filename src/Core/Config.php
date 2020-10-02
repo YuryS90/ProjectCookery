@@ -10,8 +10,7 @@ class Config
     const MYSQL_DATABASE = 'originalcp';
     const PAGE_SIZE = 10;
     const PAGE_SIZE_DISH = 5;
-    //    const MYSQL_TABLE = 'phonebook';
-    // const MYSQL_INFO = 'phonebook';
+    const PAGE_SIZE_DISH_USERS = 9;
     const BLOCK_LIST = '../BlockList.json';
     const SALT = '12345678910';
 }

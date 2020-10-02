@@ -20,36 +20,33 @@ $form = Html::create('Form')
 
 foreach ($fields as $name => $value) {
 
-    $form
-        ->addContent(Html::create('Label')
-            ->setFor($name)
-            ->setClass('comment')
-            ->setInnerText($comments[$name])
-            ->html());
-
     if ($name == 'users_id') {
         $form
             ->addContent(
-                (new Select())
-                    ->setName($name)
-                    ->setSelectedValues([$value])
-                    ->setId($name)
-                    ->setData($usersList)
-                    ->html()
-            );
+                Html::create('Input')
+                    ->setType('hidden')
+                    ->setName('id')
+                    ->setValue($id)
+                    ->html());
 
     } elseif ($name == 'date') {
         $form
             ->addContent(
                 Htmlt::input()
-                    ->setType('datetime-local')
-                    ->setValue(date("Y-m-d\TH:i:s", strtotime($value)))
-                    ->setDisabled()
+                    ->setType('hidden')
+                    ->setValue(date('Y-m-d H:i:s'))
                     ->setName($name)
                     ->setId($name)
                     ->html());
 
     } elseif ($name == 'dishes_id') {
+        $form
+            ->addContent(Html::create('Label')
+                ->setFor($name)
+                ->setClass('comment')
+                ->setInnerText($comments[$name])
+                ->html());
+
         $form
             ->addContent(
                 (new Select())
@@ -60,6 +57,13 @@ foreach ($fields as $name => $value) {
                     ->html()
             );
     } elseif ($name == 'count') {
+        $form
+            ->addContent(Html::create('Label')
+                ->setFor($name)
+                ->setClass('comment')
+                ->setInnerText($comments[$name])
+                ->html());
+
         $form
             ->addContent(
                 Html::create('input')
@@ -72,19 +76,12 @@ foreach ($fields as $name => $value) {
 
     } elseif ($name == 'status') {
         $form
-            ->addContent((new Select())
-                ->setName($name)
-                ->setId($name)
-                ->setSelectedValues([$value])
-                ->setData(
-                    [
-                        'Ожидание' => 'Ожидание',
-                        'Готово' => 'Готово',
-                        'Отменён' => 'Заказ отменён',
-                        'Оплачено' => 'Заказ оплачен'
-                    ]
-                )
-                ->html());
+            ->addContent(
+                Html::create('Input')
+                    ->setType('hidden')
+                    ->setName($name)
+                    ->setValue('Изменён(Ожидание)')
+                    ->html());
     } else {
         $form
             ->addContent(Html::create('input')

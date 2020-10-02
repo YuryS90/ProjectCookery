@@ -33,6 +33,7 @@ class TableEdited extends Table
                 "<div class='dropdown-menu'>" .
                 "<a class='dropdown-item' href='?action=del&type=$this->type&id=$row[id]'>Удалить</a>" .
                 "<a class='dropdown-item' href='?action=showedit&type=$this->type&id=$row[id]'>Редактировать</a>" .
+//                "<a class='dropdown-item popup__link' href='#popup'>Редактировать</a>" .
                 "</div></td>\n";
 
 

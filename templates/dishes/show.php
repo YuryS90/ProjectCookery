@@ -1,5 +1,8 @@
 <?php
 
+
+use TexLab\Html\Select;
+
 use View\Html\Html;
 
 
@@ -8,65 +11,91 @@ use View\Html\Html;
  * @var array $comments Комментарии к полям таблицы
  * @var string $type Имя контроллера
  * @var array $table
+ * @var int $currentPage
  */
+?>
+<h3>Работа с блюдами</h3>
+<?php
+foreach ($table as &$value) {
+    $ext = pathinfo($value['imgdishes'], PATHINFO_EXTENSION);
+    $value['imgdishes'] = "<img src='images/dishes/$value[id].$ext' class='img'>";
 
-foreach ($table as &$row) {
-    $ext = pathinfo($row['imgdishes'], PATHINFO_EXTENSION);
-    $row['imgdishes'] = "<img src='images/dishes/$row[id].$ext' class='img'>";
+    if ($value['statusdish'] == 'Актуально') {
+        $value['statusdish'] = "<div class='stat stat_5'>" . $value['statusdish'] . "</div>";
+    } elseif ($value['statusdish'] == 'Не актуально') {
+        $value['statusdish'] = "<div class='stat stat_6'>" . $value['statusdish'] . "</div>";
+    }
+
+    if ($value['namedishes']) {
+        $value['namedishes'] = "<div class='stat'>" . $value['namedishes'] . "</div>";
+    }
+
+    if ($value['volume']) {
+        $value['volume'] = "<div class='stat volume'>" . $value['volume'] . "</div>";
+    }
+
+    if ($value['unit']) {
+        $value['unit'] = "<div class='stat volume'>" . $value['unit'] . "</div>";
+    }
+
+    if ($value['price']) {
+        $value['price'] = "<div class='stat price'>" . $value['price'] . "</div>";
+    }
+}
+// Вывод ошибок
+if (!empty($_SESSION['errors'])) {
+    foreach ($_SESSION['errors'] as $error) {
+        echo "<div class='alert alert-danger' role='alert'>$error</div>";
+    }
+    unset($_SESSION['errors']);
 }
 
-echo Html::create('TableEdited')
-    ->setControllerType($type)
+echo TexLab\Html\Html::table()
+    ->setData($table)
     ->setHeaders($comments)
-    ->data($table)
-    ->setClass('table')
+    ->setClass('table table-striped table-warning')
+    ->loopByRow(function (&$row) use ($type) {
+        $row['edit'] = "<button type='button' class='btn btn-danger dropdown-toggle'" .
+            "data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Опции</button>\n" .
+            "<div class='dropdown-menu'>" .
+            "<a class='dropdown-item' href='?action=del&type=$type&id=$row[id]'>Удалить</a>" .
+            "<a class='dropdown-item' href='?action=showedit&type=$type&id=$row[id]'>Редактировать</a>" .
+            "</div>\n";
+    })
     ->html();
 
-    
-// echo "<div class='col-md-3 col-sm-6'>";
-// echo "<div class='card'>";
-// echo "<img src='../../public/images/card/bliny.jpg' class='card-img-top'>";
-// echo "<div class='card-body'>";
-// echo "<h5 class='card-title'>" . "Состав:";
-// echo "</h5>";
-// echo "<p class='card-text'>" . "Компонент 1, компонент 2, компонент 3, компонент 4, компонент 5, компонент
-//                6, компонент 7, компонент 8";
-// echo "</p>";
-// echo "</div>";
-// echo "<ul class='list-group list-group-flush'>";
-// echo "<li class='list-group-item'>" . "<b>" . "Блюдо 1" . "</b>" . "</li>";
-// echo "<li class='list-group-item text-danger'>" . "3 руб" . "</li>";
-// echo "</ul>";
-// echo "<div class='card-body'>";
-// echo Html::create("A")
-//    ->setHref('#')
-//    ->setClass('btn btn-primary buy')
-//    ->setInnerText('Заказать')
-//    ->html();
-// echo "</div>";
-// echo "</div>";
-// echo "</div>";
 
 
-echo "<div class='contPag'>";
-echo Html::create("Pagination")
-    ->setClass('pagination')
-    ->setControllerType($type)
-    ->setPageCount($pageCount)
-    ->html();
-echo "</div>";
 ?>
 
 <a class="btn btn-light" id="addButton">Добавить блюдо</a>
 
 <?php
-
+if ($pageCount > 1) {
+    echo "<div class='contPag'>";
+    echo TexLab\Html\Html::pagination()
+        ->setPageCount($pageCount)
+        ->setCurrentPage($currentPage)
+        ->setClass('pagination')
+        ->setUrlPrefix("?action=show&type=$type")
+        ->setPrevious('&laquo;')
+        ->setNext('&raquo;')
+        ->html();
+    echo "</div>";
+ }
+// echo "<div class='contPag'>";
+// echo Html::create("Pagination")
+//     ->setClass('pagination')
+//     ->setControllerType($type)
+//     ->setPageCount($pageCount)
+//     ->html();
+// echo "</div>";
 
 $form = Html::create('Form')
     ->setMethod('POST')
     ->setAction("?action=add&type=$type")
     ->setClass('hidden')
-//    ->addClass('hidden', 'form')
+    //    ->addClass('hidden', 'form')
     ->setId('addForm');
 
 foreach ($fields as $field) {
@@ -88,7 +117,6 @@ foreach ($fields as $field) {
                     ->setType('file')
                     ->html()
             );
-
     } elseif ($field == 'composition') {
         $form
             ->addContent(
@@ -99,6 +127,18 @@ foreach ($fields as $field) {
                     ->setId($field)
                     ->html()
             );
+    } elseif ($field == 'statusdish') {
+        $form
+            ->addContent((new Select())
+                ->setName($field)
+                ->setId($field)
+                ->setData(
+                    [
+                        'Актуально' => 'Актуально',
+                        'Не актуально' => 'Не актуально'
+                    ]
+                )
+                ->html());
 
     } else {
         $form

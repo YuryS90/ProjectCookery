@@ -48,6 +48,7 @@ abstract class AbstractTableController extends AbstractController implements CRU
             ->view
             ->setTemplate('show')
             ->setData([
+
                 'table' => $this
                     ->table
                     ->reset()
@@ -56,7 +57,8 @@ abstract class AbstractTableController extends AbstractController implements CRU
                 'fields' => array_diff($this->table->getColumnsNames(), ['id']),
                 'comments' => $this->table->getColumnsComments(),
                 'type' => $this->getClassName(),
-                'pageCount' => $this->table->pageCount()
+                'pageCount' => $this->table->pageCount(),
+                'currentPage' => $data['get']['page'] ?? 1
             ]);
 
         //        echo $this->table
